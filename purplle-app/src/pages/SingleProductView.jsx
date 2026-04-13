@@ -57,6 +57,7 @@ function SingleProduct() {
             Add to Cart
         </button>
         <button className="Wishlist-Button" onClick={() => dispatch({
+          type: "ADD_WISHLIST",
           products:{
             _id: product._id,
             name: product.name,
