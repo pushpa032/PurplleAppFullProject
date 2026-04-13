@@ -1,0 +1,24 @@
+.admin-add-carousel-container {
+  width: 300px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.carousel-title {
+  margin-bottom: 15px;
+}
+
+.carousel-input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+}
+
+.carousel-button {
+  padding: 8px 12px;
+  background-color: purple;
+  color: white;
+  border: none;
+  cursor: pointer;
+}

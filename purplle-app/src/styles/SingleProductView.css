@@ -1,0 +1,54 @@
+.single-product-page-view {
+  display: flex;
+  gap: 40px;
+  padding: 30px;
+}
+
+.single-product-image img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.single-product-information {
+  max-width: 400px;
+}
+
+.single-product-information h2 {
+  margin-bottom: 10px;
+}
+
+.single-price {
+  color: green;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.buy-button {
+  padding: 10px 20px;
+  background: #f386ec;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.buy-button:hover {
+  background-color: purple;
+}
+
+.Wishlist-Button {
+  padding: 10px 20px;
+  background: #f386ec;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left:50px;
+}
+
+
+.Wishlist-Button:hover {
+  background-color: purple;
+}

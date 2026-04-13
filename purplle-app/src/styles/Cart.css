@@ -1,0 +1,41 @@
+.CartContainer {
+  padding: 20px;
+}
+
+.CartRow {
+  display: flex;
+  gap: 20px;
+}
+
+.col-8 {
+  flex: 3;
+}
+
+.col-4 {
+  flex: 1;
+}
+
+.secondary {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #fafafa;
+}
+
+.secondary h5 {
+  margin: 10px 0;
+}
+
+.cart-button-warning {
+  width: 100%;
+  padding: 10px;
+  background: #f386ec;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cart-button-warning:hover{
+  background-color: purple;
+}

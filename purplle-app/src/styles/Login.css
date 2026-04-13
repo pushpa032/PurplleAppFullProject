@@ -1,0 +1,146 @@
+.login {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.login-main-page {
+  width: 380px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 22px;
+  position: relative;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.login-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #555;
+}
+
+.login-close:hover {
+  color: #a020f0;
+}
+
+
+.offer-box {
+  background: linear-gradient(90deg, #fff0f6, #fdf2ff);
+  border-radius: 8px;
+  padding: 14px;
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.offer-box strong {
+  font-size: 22px;
+  margin: 0 4px;
+}
+
+.offer-box p {
+  font-size: 12px;
+  margin: 4px 0;
+  color: #555;
+}
+
+.offer-box .code {
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+
+.login-main-page h4 {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.login-main-page input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #d1d1d1;
+  outline: none;
+  margin-bottom: 14px;
+  transition: 0.3s;
+}
+
+.login-main-page input[type="text"]:focus {
+  border-color: #a020f0;
+  box-shadow: 0 0 0 2px rgba(160, 32, 240, 0.1);
+}
+
+.login-main-page input[type="checkbox"] {
+  margin-right: 6px;
+  cursor: pointer;
+}
+
+.allow {
+  font-size: 12px;
+  display: inline;
+  color: #555;
+}
+
+.active-button {
+  width: 100%;
+  padding: 12px;
+  background: #a020f0;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 14px;
+  transition: 0.3s;
+}
+
+.active-button:hover {
+  background: #7c16c4;
+}
+
+.signup-link{
+  font-size:13px;
+  text-align:center;
+  margin-top:12px;
+  color:#555;
+}
+
+.signup-link span{
+  color:#7c16c4;
+  font-weight: 600;
+  cursor:pointer;
+}
+
+.signup-link span:hover{
+  color:blue;
+  text-decoration:underline;
+}
+
+.info {
+  font-size: 11px;
+  color: gray;
+  margin-top: 16px;
+  line-height: 1.5;
+}
+
+.info a {
+  color: #7c3aed;
+  text-decoration: none;
+  font-size: 11px;
+}
+
+.info a:hover {
+  text-decoration: underline;
+}

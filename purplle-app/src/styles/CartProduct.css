@@ -1,0 +1,82 @@
+.cart-product-container {
+  display: flex;
+  justify-content: center;
+  margin: 15px 0;
+}
+
+.CartProduct {
+  display: flex;
+  gap: 20px;
+  width: 90%;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.CartProduct img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.detail {
+  flex: 1;
+}
+
+.detail h4 {
+  margin: 5px 0;
+}
+
+.detail h5 {
+  color: green;
+  margin: 5px 0;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.rounded-circle1{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: none;
+  background: red;
+  color: white;
+  cursor: pointer;
+}
+
+.rounded-circle3 {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: none;
+  background: green;
+  color: white;
+  cursor: pointer;
+}
+
+.rounded-circle2 {
+  width: 40px;
+  height: 35px;
+  border: none;
+  background: #f1f1f1;
+}
+
+.button-remove {
+  padding: 6px 12px;
+  background: #f386ec ;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button-remove:hover {
+  background-color: purple;
+}

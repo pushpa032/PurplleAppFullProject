@@ -1,0 +1,39 @@
+import "./SignupOTP.css";
+
+function SignupOTP() {
+  return (
+    <div className="otp-overlay">
+      <div className="otp-modal">
+
+        <button className="close-btn">✕</button>
+
+        <h3 className="otp-title">
+          Please enter the OTP we have sent you on your mobile number
+        </h3>
+
+        <div className="otp-number">
+          - - - - - - - - - -  <span className="edit">Edit</span>
+        </div>
+
+        <div className="otp-inputs">
+          <input maxLength="1" />
+          <input maxLength="1" />
+          <input maxLength="1" />
+          <input maxLength="1" />
+          <input maxLength="1" />
+          <input maxLength="1" />
+        </div>
+
+        <p className="resend">
+          Resend OTP in <span>26</span> seconds
+        </p>
+
+        <button className="verify-btn" disabled>
+          VERIFY
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default SignupOTP;

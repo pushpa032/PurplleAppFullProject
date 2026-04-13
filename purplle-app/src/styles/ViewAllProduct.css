@@ -1,0 +1,70 @@
+.viewProductSection{
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 16px;
+
+}
+
+.viewProductSection h2{
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 20px;
+
+}
+
+.ViewProduct-row{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+
+}
+
+.ViewProduct-card{
+    border: 1px solid #eee;
+    padding: 10px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.ViewProduct-card img{
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+}
+
+.ViewPrduct-info{
+    margin-top: 8px;
+    font-family: Arial, sans-serif;
+    
+
+}
+
+.ViewPrductCategory{
+    font-size: 13px;
+    font-weight: 600;
+    color: #000;
+
+}
+
+.ViewProductName{
+    font-size: 15px;
+    color: #333;
+    margin-bottom: 10px;
+    line-height: 1.4;
+
+}
+
+.ViewProductDescription{
+    font-size: 12px;
+    color: black;
+    margin-top: 10px;
+
+}
+
+.ViewProductRating{
+    font-size: 12px;
+    margin-top: 4px;
+
+}

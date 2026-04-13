@@ -1,0 +1,64 @@
+.checkout-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.checkout-page-form {
+  width: 350px;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.checkout-page-title {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.checkout-page-summary {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.checkout-page-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+.checkout-page-textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+.checkout-page-select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+
+.checkout-page-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #f386ec;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.checkout-page-button:hover {
+  background-color: purple;
+}

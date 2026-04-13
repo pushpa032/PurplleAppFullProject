@@ -1,0 +1,84 @@
+.add-product-container {
+  max-width: 400px;
+  width: 100%;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.add-title {
+  margin-bottom: 20px;
+}
+
+.add-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.add-form select{
+  padding:10px;
+  border-radius:6px;
+  border:1px solid #ccc;
+  font-size:14px;
+  font-weight:normal;
+  color:#555;
+}
+.add-form select:focus{
+  outline: none;
+  border-color: #007bff;
+}
+
+.add-form textarea{
+  padding:10px;
+  border-radius:6px;
+  border:1px solid #ccc;
+  font-size:14px;
+  height:80px;
+  resize:none;
+
+}
+.add-form textarea:focus{
+  outline: none;
+  border-color: #007bff;
+}
+
+.add-form input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.add-form input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.add-product-button {
+  padding: 10px;
+  border: none;
+  background-color: green;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.add-product-button:hover {
+  background-color: darkgreen;
+}
+
+.view-product-button {
+  margin-top: 20px;
+  padding: 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.view-product-button:hover {
+  background-color: #0056b3;
+}
+

@@ -1,0 +1,1 @@
+export const baseUrl = `https://purplleapp-1.onrender.com`
