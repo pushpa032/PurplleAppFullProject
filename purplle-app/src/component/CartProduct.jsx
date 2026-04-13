@@ -29,7 +29,7 @@ const CartProduct = ({ product }) => {
       <div className='cart-product-container'>
         <div className="CartProduct">
             <img
-                src={`https://purplleapp-1.onrender.com/Images/${product.file}`}
+                src={`https://purplleappbackend.onrender.com/Images/${product.file}`}
                 alt={product.name}
             />
             <div className="detail">
