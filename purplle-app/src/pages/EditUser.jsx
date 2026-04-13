@@ -14,7 +14,7 @@ function EditUser(){
     const [password, setPassword] = useState("");
 
     useEffect(() => {
-        axios.get(`https://purplleapp-1.onrender.com/users/${id}`)
+        axios.get(`https://purplleappbackend.onrender.com/users/${id}`)
         .then(res => {
             setName(res.data.name);
             setMobile(res.data.mobile);
@@ -34,7 +34,7 @@ function EditUser(){
             password
         };
 
-        await axios.put(`https://purplleapp-1.onrender.com/users/${id}`, updateUser);
+        await axios.put(`https://purplleappbackend.onrender.com/users/${id}`, updateUser);
 
         alert("User Updated !");
         navigate("/admin/manageUsers");

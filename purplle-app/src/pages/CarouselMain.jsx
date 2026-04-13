@@ -60,7 +60,7 @@ const CarouselMain = ({
   useEffect(() => {
 
     //this is for to fetch the carousel image from backend
-    axios.get("https://purplleapp-1.onrender.com/carousel")
+    axios.get("https://purplleappbackend.onrender.com/carousel")
     .then(res => setSlides(res.data))
     .catch(err => console.log(err));
 
@@ -80,7 +80,7 @@ const CarouselMain = ({
         {slides.map((slide, index) => (
           <CarouselItem
             key={index}
-            slide={`https://purplleapp-1.onrender.com/Images/${slide.file}`}
+            slide={`https://purplleappbackend.onrender.com/Images/${slide.file}`}
             stopSlide={stopSlideTimer}
             startSlide={startSlideTimer}
           />

@@ -17,7 +17,7 @@ function SingleProduct() {
 
   const getProduct = async () => {
     try {
-      const res = await axios.get(`https://purplleapp-1.onrender.com/products/${id}`);
+      const res = await axios.get(`https://purplleappbackend.onrender.com/products/${id}`);
       console.log(res.data);
       setProduct(res.data);
     } catch (error) {
@@ -35,7 +35,7 @@ function SingleProduct() {
       <div className="single-product-page-view">
         <div className="single-product-image">
           <img
-            src={`https://purplleapp-1.onrender.com/Images/${product.file}`}
+            src={`https://purplleappbackend.onrender.com/Images/${product.file}`}
             alt={product.name}
           />
         </div>

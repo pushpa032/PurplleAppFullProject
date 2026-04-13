@@ -16,7 +16,7 @@ function EditProduct(){
     const [image, setImage] = useState(null);
 
     useEffect(() => {
-        axios.get(`https://purplleapp-1.onrender.com/products/${id}`)
+        axios.get(`https://purplleappbackend.onrender.com/products/${id}`)
         .then(res => {
             setName(res.data.name);
             setPrice(res.data.price);
@@ -41,7 +41,7 @@ function EditProduct(){
             formData.append("file", image);
         }
 
-        await axios.put(`https://purplleapp-1.onrender.com/products/${id}`, formData);
+        await axios.put(`https://purplleappbackend.onrender.com/products/${id}`, formData);
         alert("Product Updated");
         navigate("/admin/manageProduct");
     };

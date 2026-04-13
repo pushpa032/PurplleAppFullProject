@@ -29,7 +29,7 @@ function ProductAdd() {
     formData.append("file", file);
 
     try {
-      await axios.post("https://purplleapp-1.onrender.com/upload", formData);
+      await axios.post("https://purplleappbackend.onrender.com/upload", formData);
 
       alert("Product Added Successfully!");
 

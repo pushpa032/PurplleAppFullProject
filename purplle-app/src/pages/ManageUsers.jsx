@@ -9,7 +9,7 @@ function ManageUsers(){
     const navigate = useNavigate();
 
     const getUser=()=>{
-        axios.get("https://purplleapp-1.onrender.com/users")
+        axios.get("https://purplleappbackend.onrender.com/users")
         .then(res => {
             setUser(res.data);
         })
@@ -21,7 +21,7 @@ function ManageUsers(){
     }, []);
 
     const handleDelete = (id) => {
-        axios.delete(`https://purplleapp-1.onrender.com/users/${id}`)
+        axios.delete(`https://purplleappbackend.onrender.com/users/${id}`)
             .then(() => {
                 alert("User deleted");
                 getUser();

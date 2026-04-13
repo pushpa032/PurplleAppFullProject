@@ -17,7 +17,7 @@ function UserRegistration() {
 
     try {
 
-      const res = await axios.post("https://purplleapp-1.onrender.com/registerUser", {
+      const res = await axios.post("https://purplleappbackend.onrender.com/registerUser", {
         name,
         mobile,
         email,

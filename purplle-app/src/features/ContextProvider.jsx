@@ -23,7 +23,7 @@ const ContextProvider = ({ children }) => {
 
   
   useEffect(() => {
-    axios.get("https://purplleapp-1.onrender.com/getCart")
+    axios.get("https://purplleappbackend.onrender.com/getCart")
       .then(res => {
         if (res.data && res.data.product) {
           dispatch({
@@ -41,7 +41,7 @@ const ContextProvider = ({ children }) => {
     localStorage.setItem("cart", JSON.stringify(cart));
 
    
-    axios.post("https://purplleapp-1.onrender.com/addCart", {
+    axios.post("https://purplleappbackend.onrender.com/addCart", {
       cart
     });
 

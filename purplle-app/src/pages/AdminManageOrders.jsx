@@ -8,7 +8,7 @@ function AdminManageOrders() {
 
   async function orderStatus(id, e) {
     let status = e.target.value;
-    await axios.put(`https://purplleapp-1.onrender.com/orders/${id}`, { status })
+    await axios.put(`https://purplleappbackend.onrender.com/orders/${id}`, { status })
     getOrders();
     console.log(res)
   }
@@ -18,7 +18,7 @@ function AdminManageOrders() {
   }, []);
 
   const getOrders = () => {
-    axios.get(`https://purplleapp-1.onrender.com/orders`)
+    axios.get(`https://purplleappbackend.onrender.com/orders`)
       .then((res) => {
         setOrders(res.data);
       })
@@ -26,7 +26,7 @@ function AdminManageOrders() {
   };
 
   const deleteOrder = (id) => {
-    axios.delete(`https://purplleapp-1.onrender.com/orders/${id}`)
+    axios.delete(`https://purplleappbackend.onrender.com/orders/${id}`)
       .then(() => {
         alert("Order Deleted");
         getOrders();

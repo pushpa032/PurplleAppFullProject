@@ -14,7 +14,7 @@ function AdminAddCarousel() {
     const formData = new FormData();
     formData.append("file", file); 
 
-    axios.post("https://purplleapp-1.onrender.com/carousel", formData)
+    axios.post("https://purplleappbackend.onrender.com/carousel", formData)
       .then(() => alert("Carousel Image Added"))
       .catch(err => {
         console.log(err);

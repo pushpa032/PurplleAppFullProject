@@ -15,7 +15,7 @@ function ManageProduct(){
     const navigate = useNavigate();
 
     const getProducts=()=>{
-        axios.get("https://purplleapp-1.onrender.com/products")
+        axios.get("https://purplleappbackend.onrender.com/products")
         .then(res =>{
             setProducts(res.data);
         })
@@ -26,7 +26,7 @@ function ManageProduct(){
     }, []);
 
     const handleDelete = (id) => {
-        axios.delete(`https://purplleapp-1.onrender.com/products/${id}`)
+        axios.delete(`https://purplleappbackend.onrender.com/products/${id}`)
             .then(() => {
                 alert("Product deleted");
                 getProducts();
@@ -58,7 +58,7 @@ function ManageProduct(){
                         <tr key = {product._id}>
                             <td>
                                 <img
-                                src={`https://purplleapp-1.onrender.com/Images/${product.file}`}
+                                src={`https://purplleappbackend.onrender.com/Images/${product.file}`}
                                 alt={product.name}
                                 className="product-img"
                                 />

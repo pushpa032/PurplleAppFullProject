@@ -8,7 +8,7 @@ function ViewProduct() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("https://purplleapp-1.onrender.com/products")
+    axios.get("https://purplleappbackend.onrender.com/products")
       .then(res => setProducts(res.data))
       .catch(err => console.log(err));
   }, []); 
@@ -21,7 +21,7 @@ function ViewProduct() {
         {products.map((product, index) => (
           <div key={index} className="view-item">
             <img
-              src={`https://purplleapp-1.onrender.com/Images/${product.file}`} 
+              src={`https://purplleappbackend.onrender.com/Images/${product.file}`} 
               alt={product.name}
               className="product-image"
             />
