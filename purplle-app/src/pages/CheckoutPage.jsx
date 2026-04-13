@@ -4,7 +4,7 @@ import { CartContext } from "../features/ContextProvider";
 import { totalItem, totalPrice } from "../features/CartReducer";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../styles/checkoutPage.css";
+import "../styles/CheckoutPage.css";
 
 function CheckoutPage() {
 
