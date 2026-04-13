@@ -8,9 +8,14 @@ function AdminManageOrders() {
 
   async function orderStatus(id, e) {
     let status = e.target.value;
-    await axios.put(`https://purplleappbackend.onrender.com/orders/${id}`, { status })
+
+    const res = await axios.put(
+      `https://purplleappbackend.onrender.com/orders/${id}`,
+      { status }
+    );
+
     getOrders();
-    console.log(res)
+    console.log(res);
   }
 
   useEffect(() => {
