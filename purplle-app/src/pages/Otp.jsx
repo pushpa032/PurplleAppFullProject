@@ -16,15 +16,30 @@ function Otp({ onClose }) {
 
   const [resendText, setResendText] = useState("Resend OTP in 30s");
 
-  const handleVerifyOtp = () => {
+  const handleVerifyOtp = async () => {
     const otp = otp1 + otp2 + otp3 + otp4 + otp5 + otp6;
-    alert("OTP entered: " + otp);
-    alert("User Loged In Successfully")
-    navigate("/"); 
-  
+
+    try {
+      const res = await fetch("https://purplleappbackend.onrender.com/verifyOtp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ mobile, otp }),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        alert("Login Successful");
+        navigate("/");
+      } else {
+        alert(data.message);
+      }
+    } catch (err) {
+      alert("Server error");
+    }
   };
 
- 
+
   const handleResend = () => {
     alert("OTP resent!");
     setOtp1(""); setOtp2(""); setOtp3(""); setOtp4(""); setOtp5(""); setOtp6("");
