@@ -34,7 +34,7 @@ function CheckoutPage() {
 
   const handlePayment = async () => {
 
-    const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js");
+    const res = await loadScript(`https://checkout.razorpay.com/v1/checkout.js`);
     if (!res) return alert("Razorpay failed");
 
     const { data } = await axios.post(`https://purplleappbackend.onrender.com/orders`, {
