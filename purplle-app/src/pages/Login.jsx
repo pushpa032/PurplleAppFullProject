@@ -15,7 +15,7 @@ function Login({ onClose }) {
     }
 
     try {
-      const res = await fetch("https://purplleappbackend.onrender.com/sendOtp", {
+      const res = await fetch(`https://purplleappbackend.onrender.com/sendOtp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ mobile }),
