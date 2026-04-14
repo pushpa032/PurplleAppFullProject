@@ -18,7 +18,6 @@ function Otp({ onClose }) {
 
   const handleVerifyOtp = () => {
     const otp = otp1 + otp2 + otp3 + otp4 + otp5 + otp6;
-    localStorage.setItem("userId", mobile);
     alert("OTP entered: " + otp);
     alert("User Loged In Successfully")
     navigate("/"); 
