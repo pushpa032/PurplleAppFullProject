@@ -20,7 +20,7 @@ function Otp({ onClose }) {
     const otp = otp1 + otp2 + otp3 + otp4 + otp5 + otp6;
 
     try {
-      const res = await fetch("https://purplleappbackend.onrender.com/verifyOtp", {
+      const res = await fetch(`https://purplleappbackend.onrender.com/verifyOtp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ mobile, otp }),
