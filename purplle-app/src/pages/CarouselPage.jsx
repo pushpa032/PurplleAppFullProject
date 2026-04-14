@@ -13,7 +13,7 @@ function CarouselPage() {
 
     return (
         <div className="CarouselPage-Container">
-            <Carousel slides = {slides}  controls indicators  />
+            <CarouselMain slides = {slides}  controls indicators  />
             
         </div>
     )
