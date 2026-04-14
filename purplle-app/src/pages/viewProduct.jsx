@@ -8,7 +8,7 @@ function ViewProduct() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("https://purplleappbackend.onrender.com/products")
+    axios.get(`https://purplleappbackend.onrender.com/products`)
       .then(res => setProducts(res.data))
       .catch(err => console.log(err));
   }, []); 

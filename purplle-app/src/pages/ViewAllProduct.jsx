@@ -6,7 +6,7 @@ function ViewAllProduct (){
     const [products, setProducts] =useState([]);
     
     useEffect(() => {
-        axios.get("https://purplleappbackend.onrender.com/products")
+        axios.get(`https://purplleappbackend.onrender.com/products`)
         .then(res => {
             setProducts(res.data);
         })

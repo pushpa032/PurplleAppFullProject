@@ -9,7 +9,7 @@ function ManageUsers(){
     const navigate = useNavigate();
 
     const getUser=()=>{
-        axios.get("https://purplleappbackend.onrender.com/users")
+        axios.get(`https://purplleappbackend.onrender.com/users`)
         .then(res => {
             setUser(res.data);
         })

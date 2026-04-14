@@ -15,7 +15,7 @@ function ManageProduct(){
     const navigate = useNavigate();
 
     const getProducts=()=>{
-        axios.get("https://purplleappbackend.onrender.com/products")
+        axios.get(`https://purplleappbackend.onrender.com/products`)
         .then(res =>{
             setProducts(res.data);
         })
