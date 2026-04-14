@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom"; 
 import LoginAdmin from "./LoginAdmin";
 import AdminDashboard from "./AdminDashboard";
-import ProductAdd from "./ProductAdd";
+import ProductAdd from "./ProductAddAdmin";
 import ViewProduct from "./viewProduct";
 import ManageProduct from "./ManageProduct";
 import EditProduct from "./EditProduct";
