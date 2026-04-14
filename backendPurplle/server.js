@@ -222,7 +222,7 @@ app.get("/getCart", async (req, res) => {
   }
 });
 
-app.post("/orders/add", placeOrder);
+app.post("/orders/add/payment", placeOrder);
 
 app.get("/orders", async (req, res) => {
   try {
