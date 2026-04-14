@@ -12,6 +12,7 @@ const OrderModel = require("./models/order");
 const { placeOrder } = require("./controllers/orderController");
 const { statusChange } = require("./controllers/statusChange");
 const path = require("path");
+const fs = require("fs");
 
 const app = express();
 
@@ -23,6 +24,11 @@ const cors = require("cors");
 app.use(cors());
 
 app.use(express.json());
+
+const dir = path.join(__dirname, "public/Images");
+if (!fs.existsSync(dir)) {
+  fs.mkdirSync(dir, { recursive: true });
+}
 
 app.use("/Images", express.static(path.join(__dirname, "public/Images")));
 app.use("/carousel", carouselRoutes);
