@@ -308,7 +308,7 @@ app.get("/payment/:paymentId", async (req, res) => {
   }
 });
 
-app.post("/verify", (req, res) => {
+app.post("/verify-payment", (req, res) => {
   const crypto = require("crypto");
 
   const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
