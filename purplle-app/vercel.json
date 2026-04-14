@@ -1,4 +1,5 @@
 {
+  "version": 2,
   "builds": [
     {
       "src": "purplle-app/package.json",
@@ -7,8 +8,5 @@
         "distDir": "dist"
       }
     }
-  ],
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
   ]
 }
