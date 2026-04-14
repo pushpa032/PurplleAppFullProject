@@ -53,7 +53,7 @@ app.post("/sendOtp", authController.sendOtp);
 app.post("/verifyOtp", async (req, res) => {
   const { mobile, otp } = req.body;
 
-  const user = await User.findOne({ mobile });
+  const user = await user.findOne({ mobile });
 
   if (!user) {
     return res.json({ success: false, message: "User not found" });
