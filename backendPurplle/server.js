@@ -11,6 +11,7 @@ const Razorpay = require("razorpay");
 const OrderModel = require("./models/order");
 const { placeOrder } = require("./controllers/orderController");
 const { statusChange } = require("./controllers/statusChange");
+const path = require("path");
 
 const app = express();
 
@@ -23,7 +24,7 @@ app.use(cors());
 
 app.use(express.json());
 
-app.use("/Images", express.static("public/Images"));
+app.use("/Images", express.static(path.join(__dirname, "public/Images")));
 app.use("/carousel", carouselRoutes);
 
 mongoose.connect(process.env.MONGO_URL)
