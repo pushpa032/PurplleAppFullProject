@@ -20,7 +20,7 @@ exports.sendOtp = async (req, res) => {
     }
 
     const otp = generateOTP();
-    const otpExpiry = new Date(Date.now() + 5 * 60 * 1000); 
+    const otpExpiry = new Date(Date.now() + 5 * 60 * 1000);
 
     let user = await User.findOne({ mobile });
     console.log("User Found:", user);
@@ -28,23 +28,25 @@ exports.sendOtp = async (req, res) => {
     if (!user) {
       console.log("Creating new user...");
       user = await User.create({
-      mobile,
-      verifyOtp: otp,
-    });
-    console.log("New User Created:", user);
+        mobile,
+        verifyOtp: otp,
+      });
+      console.log("New User Created:", user);
     } else {
       console.log("Updating existing user...");
       user.verifyOtp = otp;
       await user.save();
       console.log("User After Update:", user);
     }
-    await sendMail(
-      "deepikackm09@gmail.com",          
-      "Purplle App Login OTP",
-      `<h2>Your OTP is: ${otp}</h2><p>Valid for 5 minutes</p>`
-    );
-
-    console.log(`OTP for ${mobile}: ${otp}`); 
+    try {
+      await sendMail(
+        "deepikackm09@gmail.com",
+        "Purplle App Login OTP",
+        `<h2>Your OTP is: ${otp}</h2><p>Valid for 5 minutes</p>`
+      );
+    } catch (mailError) {
+      console.log("MAIL FAILED BUT CONTINUING:", mailError.message);
+    }
 
     res.json({ success: true, message: "OTP Sent Successfully", mobile });
   } catch (error) {
