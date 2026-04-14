@@ -50,6 +50,22 @@ app.post("/createUser", (req, res) => {
 
 app.post("/sendOtp", authController.sendOtp);
 
+app.post("/verifyOtp", async (req, res) => {
+  const { mobile, otp } = req.body;
+
+  const user = await User.findOne({ mobile });
+
+  if (!user) {
+    return res.json({ success: false, message: "User not found" });
+  }
+
+  if (user.verifyOtp === otp) {
+    return res.json({ success: true, message: "OTP verified" });
+  }
+
+  return res.json({ success: false, message: "Invalid OTP" });
+});
+
 app.get("/products", async (req, res) => {
   try {
     const products = await ProductModel.find();
