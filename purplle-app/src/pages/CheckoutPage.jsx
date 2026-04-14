@@ -80,7 +80,7 @@ function CheckoutPage() {
       paymentId,
     };
 
-    await axios.post("https://purplleappbackend.onrender.com/add", orderData);
+    await axios.post("https://purplleappbackend.onrender.com/orders/add", orderData);
 
     alert("Order Placed Successfully ");
 
