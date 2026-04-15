@@ -70,7 +70,7 @@ function ProductRow() {
           <div className="product-card" key={i}>
 
             <img 
-            src={`https://purplleappbackend.onrender.com/Images/${product.file}`} 
+            src={product.imageUrl}
             alt={product.name}
             onClick={() => navigate(`/single-product-view/${product._id}`)} 
             />

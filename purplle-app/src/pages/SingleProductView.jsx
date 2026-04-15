@@ -35,7 +35,7 @@ function SingleProduct() {
       <div className="single-product-page-view">
         <div className="single-product-image">
           <img
-            src={`https://purplleappbackend.onrender.com/Images/${product.file}`}
+            src={product.imageUrl}
             alt={product.name}
           />
         </div>

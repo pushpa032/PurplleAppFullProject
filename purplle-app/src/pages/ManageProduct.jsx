@@ -58,7 +58,7 @@ function ManageProduct(){
                         <tr key = {product._id}>
                             <td>
                                 <img
-                                src={`https://purplleappbackend.onrender.com/Images/${product.file}`}
+                                src={product.imageUrl}
                                 alt={product.name}
                                 className="product-img"
                                 />

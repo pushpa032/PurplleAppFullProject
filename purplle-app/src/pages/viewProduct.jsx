@@ -21,7 +21,7 @@ function ViewProduct() {
         {products.map((product, index) => (
           <div key={index} className="view-item">
             <img
-              src={`https://purplleappbackend.onrender.com/Images/${product.file}`} 
+              src={product.imageUrl}
               alt={product.name}
               className="product-image"
             />

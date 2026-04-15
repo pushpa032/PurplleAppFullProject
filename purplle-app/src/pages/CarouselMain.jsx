@@ -80,7 +80,7 @@ const CarouselMain = ({
         {slides.map((slide, index) => (
           <CarouselItem
             key={index}
-            slide={`https://purplleappbackend.onrender.com/Images/${slide.file}`}
+            slide={slide.imageUrl}
             stopSlide={stopSlideTimer}
             startSlide={startSlideTimer}
           />
