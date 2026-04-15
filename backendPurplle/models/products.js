@@ -7,6 +7,7 @@ const ProductSchema = new mongoose.Schema({
   description:String,
   rating:Number,
   file:String,
+  imageUrl:String,
 });
 
 
