@@ -98,7 +98,8 @@ app.get("/product/:id", async (req, res) => {
   }
 });
 
-app.post("/upload", upload.single("file"), async (req, res) => {
+/*app.post("/upload", upload.single("file"), async (req, res) => {*/
+app.post("/upload", async (req, res) => {
   try {
     const newProduct = new ProductModel({
       name: req.body.name,
@@ -106,7 +107,7 @@ app.post("/upload", upload.single("file"), async (req, res) => {
       category: req.body.category,
       description: req.body.description,
       rating: req.body.rating,
-      file: req.file.filename,
+      /*file: req.file.filename,*/
       imageUrl:req.file.imageUrl,
     });
     await newProduct.save();
