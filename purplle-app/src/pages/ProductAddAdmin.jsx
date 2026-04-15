@@ -7,7 +7,7 @@ function ProductAdd() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [file, setFile] = useState(null);
-  const [imageUrl, setImageUrl] = useState(null);
+  const [imageUrl, setImageUrl] = useState("");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const [rating, setRating] = useState("");
@@ -42,7 +42,7 @@ function ProductAdd() {
       setDescription("");
       setRating("");
       setFile(null);
-      setImageUrl(null);
+      setImageUrl("");
 
 
 
