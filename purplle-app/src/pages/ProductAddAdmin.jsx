@@ -7,6 +7,7 @@ function ProductAdd() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [file, setFile] = useState(null);
+  const [imageUrl, setImageUrl] = useState();
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const [rating, setRating] = useState("");
@@ -15,7 +16,7 @@ function ProductAdd() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!name || !price || !category || !description ||!rating|| !file) {
+    if (!name || !price || !category || !description || !rating || !imageUrl) {
       alert("Please fill all fields");
       return;
     }
@@ -23,10 +24,11 @@ function ProductAdd() {
     const formData = new FormData();
     formData.append("name", name);
     formData.append("price", price);
-    formData.append("category",category);
+    formData.append("category", category);
     formData.append("description", description);
     formData.append("rating", rating);
     formData.append("file", file);
+    formData.append("imageUrl", imageUrl);
 
     try {
       await axios.post("https://purplleappbackend.onrender.com/upload", formData);
@@ -40,9 +42,10 @@ function ProductAdd() {
       setDescription("");
       setRating("");
       setFile(null);
+      setImageUrl("");
 
-      
-      
+
+
     } catch (error) {
       console.log(error);
       alert("Error adding product");
@@ -69,8 +72,8 @@ function ProductAdd() {
         />
 
         <select
-        value={category}
-        onChange={(e) => setCategory(e.target.value)}
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
         >
           <option value="" >Select Category</option>
           <option value="Skincare">Skincare</option>
@@ -82,22 +85,29 @@ function ProductAdd() {
         </select>
 
         <textarea
-        placeholder="Product Description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
+          placeholder="Product Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
         ></textarea>
 
         <input
-        type="number"
-        placeholder="Rating(1-5)"
-        value={rating}
-        onChange={(e) =>setRating(e.target.value)}
+          type="number"
+          placeholder="Rating(1-5)"
+          value={rating}
+          onChange={(e) => setRating(e.target.value)}
         />
 
         <input
-          type="file" 
-          accept ="image/jpg, image/jpeng, image/png, image/webp "
+          type="file"
+          accept="image/jpg, image/jpeng, image/png, image/webp "
           onChange={(e) => setFile(e.target.files[0])}
+        />
+
+        <input
+          type="text"
+          placeholder="Add Image URL "
+          value={imageUrl}
+          onChange={(e) => setImageUrl(e.target.value)}
         />
 
         <button type="submit" className="add-product-button">
