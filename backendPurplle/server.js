@@ -107,6 +107,7 @@ app.post("/upload", upload.single("file"), async (req, res) => {
       description: req.body.description,
       rating: req.body.rating,
       file: req.file.filename,
+      imageUrl:req.file.imageUrl,
     });
     await newProduct.save();
     res.send({ msg: "Product uploaded successfully" });
