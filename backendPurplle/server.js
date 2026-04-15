@@ -5,7 +5,7 @@ const RegisterModel = require("./models/register");
 const ProductModel = require("./models/products");
 const CartModel = require("./models/cart");
 const authController = require("./controllers/authController");
-const upload = require("./Multer/upload");
+/*const upload = require("./Multer/upload");*/
 const carouselRoutes = require("./routes/carouselRoutes");
 const Razorpay = require("razorpay");
 const OrderModel = require("./models/order");
@@ -108,7 +108,7 @@ app.post("/upload", async (req, res) => {
       description: req.body.description,
       rating: req.body.rating,
       /*file: req.file.filename,*/
-      imageUrl:req.file.imageUrl,
+      imageUrl:req.body.imageUrl,
     });
     await newProduct.save();
     res.send({ msg: "Product uploaded successfully" });
