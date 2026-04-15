@@ -6,7 +6,7 @@ import "../styles/AddProductAdmin.css";
 function ProductAdd() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
-  const [file, setFile] = useState(null);
+  /*const [file, setFile] = useState(null);*/
   const [imageUrl, setImageUrl] = useState("");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
@@ -27,7 +27,7 @@ function ProductAdd() {
     formData.append("category", category);
     formData.append("description", description);
     formData.append("rating", rating);
-    formData.append("file", file);
+    /*formData.append("file", file);*/
     formData.append("imageUrl", imageUrl);
 
     try {
@@ -40,7 +40,7 @@ function ProductAdd() {
       setCategory("");
       setDescription("");
       setRating("");
-      setFile(null);
+      /*setFile(null);*/
       setImageUrl("");
 
 
@@ -96,12 +96,11 @@ function ProductAdd() {
           onChange={(e) => setRating(e.target.value)}
         />
 
-        <input
+        /*<input
           type="file"
-          accept="image/jpg, image/jpeng, image/png, image/webp "
           placeholder="Choose File"
           onChange={(e) => setFile(e.target.files[0])}
-        />
+        />*/
 
         <input
           type="text"
