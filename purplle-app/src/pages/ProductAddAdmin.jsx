@@ -21,17 +21,26 @@ function ProductAdd() {
       return;
     }
 
-    const formData = new FormData();
+    /*const formData = new FormData();
     formData.append("name", name);
     formData.append("price", price);
     formData.append("category", category);
     formData.append("description", description);
     formData.append("rating", rating);
     /*formData.append("file", file);*/
-    formData.append("imageUrl", imageUrl);
+    /*formData.append("imageUrl", imageUrl);*/
 
     try {
-      await axios.post(`https://purplleappbackend.onrender.com/upload`);
+      await axios.post(`https://purplleappbackend.onrender.com/upload`,
+        {
+        name,
+        price,
+        category,
+        description,
+        rating,
+        imageUrl,
+      }
+      );
 
       alert("Product Added Successfully");
 
