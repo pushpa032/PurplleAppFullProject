@@ -37,7 +37,6 @@ function ProductAdd() {
 
       setName("");
       setPrice("");
-      setMrp("");
       setCategory("");
       setDescription("");
       setRating("");
