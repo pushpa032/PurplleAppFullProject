@@ -55,7 +55,7 @@ app.post("/sendOtp", authController.sendOtp);
 app.post("/verifyOtp", async (req, res) => {
   const { mobile, otp } = req.body;
 
-  const user = await user.findOne({ mobile });
+  const userModel = await userModel.findOne({ mobile });
 
   if (!user) {
     return res.json({ success: false, message: "User not found" });
@@ -101,6 +101,7 @@ app.get("/product/:id", async (req, res) => {
 /*app.post("/upload", upload.single("file"), async (req, res) => {*/
 app.post("/upload", async (req, res) => {
   try {
+    console.log("BODY:", req.body);
     const newProduct = new ProductModel({
       name: req.body.name,
       price: req.body.price,
