@@ -31,9 +31,9 @@ function ProductAdd() {
     formData.append("imageUrl", imageUrl);
 
     try {
-      await axios.post(`https://purplleappbackend.onrender.com/upload`, formData);
+      await axios.post(`https://purplleappbackend.onrender.com/upload`);
 
-      alert("Product Added Successfully!");
+      alert("Product Added Successfully");
 
       setName("");
       setPrice("");
