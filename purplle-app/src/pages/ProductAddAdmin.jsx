@@ -96,12 +96,6 @@ function ProductAdd() {
           onChange={(e) => setRating(e.target.value)}
         />
 
-        //<input
-         // type="file"
-         // placeholder="Choose File"
-         // onChange={(e) => setFile(e.target.files[0])}
-        />
-
         <input
           type="text"
           placeholder="Add Image URL "
