@@ -95,7 +95,8 @@ function ProductAdd() {
         />
 
         <input
-          type="file"
+          type="file" 
+          accept ="image/jpg, image/jpeng, image/png, image/webp "
           onChange={(e) => setFile(e.target.files[0])}
         />
 
