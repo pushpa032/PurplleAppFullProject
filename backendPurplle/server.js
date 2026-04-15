@@ -117,7 +117,8 @@ app.post("/upload", async (req, res) => {
   }
 });
 
-app.put("/products/:id", upload.single("file"), async (req, res) => {
+/*app.put("/products/:id", upload.single("file"), async (req, res) => {*/
+app.put("/products/:id", async (req, res) => {
   const { name, price, category, description, rating } = req.body;
 
   let updateData = {
