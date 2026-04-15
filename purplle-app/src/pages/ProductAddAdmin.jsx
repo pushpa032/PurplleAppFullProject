@@ -100,6 +100,7 @@ function ProductAdd() {
         <input
           type="file"
           accept="image/jpg, image/jpeng, image/png, image/webp "
+          placeholder="Add Image File"
           onChange={(e) => setFile(e.target.files[0])}
         />
 
