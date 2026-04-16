@@ -9,7 +9,8 @@ const CartSchema = new mongoose.Schema({
       category: String,
       quantity: Number,
       description: String,
-      file: String
+      /*file: String*/
+      imageUrl:String,
     }
   ]
 });
