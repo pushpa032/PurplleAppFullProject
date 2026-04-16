@@ -7,7 +7,8 @@ const orderSchema = new mongoose.Schema({
       name: String,
       price: Number,
       quantity: Number,
-      file: String
+      /*file: String*/
+      imageUrl:String,
     }
   ],
   user: {
