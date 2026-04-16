@@ -13,7 +13,7 @@ function EditProduct(){
     const [category, setCategory] = useState("");
     const [description, setDescription] = useState("");
     const [rating, setRating] = useState("");
-    const [imageurl, setImageUrl] = useState(null);
+    const [imageUrl, setImageUrl] = useState(null);
 
     useEffect(() => {
         axios.get(`https://purplleappbackend.onrender.com/products/${id}`)
@@ -23,6 +23,7 @@ function EditProduct(){
             setCategory(res.data.category);
             setDescription(res.data.description);
             setRating(res.data.rating);
+            setImageUrl(res.data.imageUrl)
         })
         .catch(err => console.log(err));
     }, [id]);
@@ -36,6 +37,7 @@ function EditProduct(){
         formData.append("category", category);
         formData.append("description", description);
         formData.append("rating", rating);
+        formData.append("imageUrl", ImageUrl);
 
         if (image){
             formData.append("imageUrl", image);
@@ -94,7 +96,7 @@ function EditProduct(){
 
                 <input
                 type="imageUrl"
-                value={imageurl}
+                value={imageUrl}
                 placeholder="Add New Image URL"
                 onChange={(e) => setImageUrl(e.target.value)}
                 />
