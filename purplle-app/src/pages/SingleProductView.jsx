@@ -49,7 +49,7 @@ function SingleProduct() {
               _id: product._id,
               name: product.name,
               price: product.price,
-              file: product.file
+              imageUrl: product.imageUrl
             },
           });
           alert("Product Added to Cart");
@@ -62,7 +62,7 @@ function SingleProduct() {
             _id: product._id,
             name: product.name,
             price: product.price,
-            file: product.file
+            imageUrl: product.imageUrl
           }
         })}>
           Add to Wishlist
