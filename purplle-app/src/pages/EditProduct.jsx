@@ -13,7 +13,7 @@ function EditProduct(){
     const [category, setCategory] = useState("");
     const [description, setDescription] = useState("");
     const [rating, setRating] = useState("");
-    const [image, setImage] = useState(null);
+    const [imageurl, setImageUrl] = useState(null);
 
     useEffect(() => {
         axios.get(`https://purplleappbackend.onrender.com/products/${id}`)
@@ -38,7 +38,7 @@ function EditProduct(){
         formData.append("rating", rating);
 
         if (image){
-            formData.append("file", image);
+            formData.append("imageUrl", image);
         }
 
         await axios.put(`https://purplleappbackend.onrender.com/products/${id}`, formData);
@@ -93,8 +93,8 @@ function EditProduct(){
                 />
 
                 <input
-                type="file"
-                onChange={(e) => setImage(e.target.files[0])}
+                type="imageUrl"
+                onChange={(e) => setImageUrl(e.target.value)}
                 />
 
                 <button type="submit">
