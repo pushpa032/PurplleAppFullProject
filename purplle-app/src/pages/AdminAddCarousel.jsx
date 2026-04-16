@@ -33,7 +33,7 @@ function AdminAddCarousel() {
         type="text"
         placeholder="Enter Image Url"
         value={imageUrl}
-        onChange={(e) => setFile(e.target.values)}
+        onChange={(e) => setImageUrl(e.target.values)}
       />
 
       <button className="carousel-button" onClick={handleSubmit}>
