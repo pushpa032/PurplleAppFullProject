@@ -34,7 +34,7 @@ const CartReducer = (state, action) => {
           _id: action.product._id.toString(),
           name: action.product.name,
           price: action.product.price,
-          file: action.product.file,
+          imageUrl: action.product.imageUrl,
           quantity: 1
         }
       ];
