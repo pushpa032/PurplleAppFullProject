@@ -17,13 +17,16 @@ router.post("/", async (req, res) => {
   try {
     const { imageUrl } = req.body;
 
-    if (!imageUrl) {
-      return res.status(400).json("Image URL required");
-    }
+    let newImage;
 
-    const newImage = new Carousel({
-      imageUrl: imageUrl
-    });
+    if (imageUrl) {
+      // NEW URL
+      newImage = new Carousel({ imageUrl });
+    } else if (req.file) {
+      newImage = new Carousel({ file: req.file.filename });
+    } else {
+      return res.status(400).json("Image required");
+    }
 
     await newImage.save();
 
@@ -33,5 +36,4 @@ router.post("/", async (req, res) => {
     res.status(500).json("Error");
   }
 });
-
 module.exports = router;
