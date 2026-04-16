@@ -10,7 +10,7 @@ function ManageProduct(){
     const[category, setCategory] = useState("");
     const[description, setDescription] = useState("");
     const[rating, setRating] = useState("");
-    const[image, setImage] = useState(null);
+    const[imageUrl, setImageUrl] = useState("");
 
     const navigate = useNavigate();
 
