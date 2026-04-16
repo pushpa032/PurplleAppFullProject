@@ -3,19 +3,21 @@ import axios from "axios";
 import "../styles/AdminAddCarousel.css";
 
 function AdminAddCarousel() {
-  const [file, setFile] = useState(null);
+  const [imageUrl, setImageUrl] = useState(null);
 
   const handleSubmit = () => {
-    if (!file) {
-      alert("Please select image");
+    if (!imageUrl) {
+      alert("Please select image URL");
       return;
     }
 
-    const formData = new FormData();
-    formData.append("file", file); 
+    /*const formData = new FormData();
+    formData.append("file", file); */
 
-    axios.post("https://purplleappbackend.onrender.com/carousel", formData)
-      .then(() => alert("Carousel Image Added"))
+    axios.post("https://purplleappbackend.onrender.com/carousel",{imageUrl})
+      .then(() => {alert("Carousel Image Added");
+        setImageUrl("");
+      })
       .catch(err => {
         console.log(err);
         alert("Error adding image");
@@ -28,8 +30,10 @@ function AdminAddCarousel() {
 
       <input
         className="carousel-input"
-        type="file"
-        onChange={(e) => setFile(e.target.files[0])}
+        type="text"
+        placeholder="Enter Image Url"
+        value={imageUrl}
+        onChange={(e) => setFile(e.target.values)}
       />
 
       <button className="carousel-button" onClick={handleSubmit}>

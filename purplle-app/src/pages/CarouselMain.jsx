@@ -60,7 +60,7 @@ const CarouselMain = ({
   useEffect(() => {
 
     //this is for to fetch the carousel image from backend
-    axios.get("https://purplleappbackend.onrender.com/carousel")
+    axios.get(`https://purplleappbackend.onrender.com/carousel`)
     .then(res => setSlides(res.data))
     .catch(err => console.log(err));
 
