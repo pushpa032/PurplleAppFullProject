@@ -3,7 +3,7 @@ import axios from "axios";
 import "../styles/AdminAddCarousel.css";
 
 function AdminAddCarousel() {
-  const [imageUrl, setImageUrl] = useState(null);
+  const [imageUrl, setImageUrl] = useState("");
 
   const handleSubmit = () => {
     if (!imageUrl) {
@@ -11,11 +11,11 @@ function AdminAddCarousel() {
       return;
     }
 
-    /*const formData = new FormData();
-    formData.append("file", file); */
-
-    axios.post("https://purplleappbackend.onrender.com/carousel",{imageUrl})
-      .then(() => {alert("Carousel Image Added");
+    axios.post("https://purplleappbackend.onrender.com/carousel", {
+      imageUrl,
+    })
+      .then(() => {
+        alert("Carousel Image Added");
         setImageUrl("");
       })
       .catch(err => {
@@ -31,9 +31,9 @@ function AdminAddCarousel() {
       <input
         className="carousel-input"
         type="text"
-        placeholder="Enter Image Url"
+        placeholder="Enter Image URL"
         value={imageUrl}
-        onChange={(e) => setImageUrl(e.target.values)}
+        onChange={(e) => setImageUrl(e.target.value)}
       />
 
       <button className="carousel-button" onClick={handleSubmit}>
