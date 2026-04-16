@@ -29,7 +29,7 @@ const CartProduct = ({ product }) => {
       <div className='cart-product-container'>
         <div className="CartProduct">
             <img
-                src={product.file}
+                src={product.imageUrl}
                 alt={product.name}
             />
             <div className="detail">
