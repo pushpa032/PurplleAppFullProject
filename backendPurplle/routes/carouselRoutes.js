@@ -1,22 +1,32 @@
 const express = require("express");
 const router = express.Router();
 const Carousel = require("../models/carousel");
-const upload = require("../Multer/upload"); 
 
-// get all  the images  to add in the home page so that the image will appear in the home page.
+// GET all images
 router.get("/", async (req, res) => {
-  const data = await Carousel.find();
-  res.json(data);
+  try {
+    const data = await Carousel.find();
+    res.json(data);
+  } catch (err) {
+    res.status(500).json("Error fetching images");
+  }
 });
 
-// add image to show in the front page or home page so that the image will appear.
-router.post("/", upload.single("file"), async (req, res) => {
+// ADD image using URL
+router.post("/", async (req, res) => {
   try {
+    const { imageUrl } = req.body;
+
+    if (!imageUrl) {
+      return res.status(400).json("Image URL required");
+    }
+
     const newImage = new Carousel({
-      file: req.file.filename   
+      imageUrl: imageUrl
     });
 
     await newImage.save();
+
     res.json("Image added");
   } catch (err) {
     console.log(err);

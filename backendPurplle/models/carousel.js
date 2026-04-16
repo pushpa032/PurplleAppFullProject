@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const CarouselSchema = new mongoose.Schema({
-  file: String
+  imageUrl: String
 });
 
 module.exports = mongoose.model("Carousel", CarouselSchema);
