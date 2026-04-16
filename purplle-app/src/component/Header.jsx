@@ -46,7 +46,7 @@ function Header() {
 
           <div className="icon">
             <Link to="/login">
-              <i className="fa-regular fa-face-smile"></i>
+              <i className="fa-regular fa-face-smile">Login</i>
             </Link>
           </div>
 
