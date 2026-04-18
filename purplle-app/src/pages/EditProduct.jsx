@@ -37,10 +37,10 @@ function EditProduct(){
         formData.append("category", category);
         formData.append("description", description);
         formData.append("rating", rating);
-        formData.append("imageUrl", ImageUrl);
+        formData.append("imageUrl", imageUrl);
 
         if (image){
-            formData.append("imageUrl", image);
+            formData.append("imageUrl", imageUrl);
         }
 
         await axios.put(`https://purplleappbackend.onrender.com/products/${id}`, formData);
