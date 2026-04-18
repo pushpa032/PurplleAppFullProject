@@ -39,9 +39,9 @@ function EditProduct(){
         formData.append("rating", rating);
         formData.append("imageUrl", imageUrl);
 
-        if (image){
+        /*if (image){
             formData.append("imageUrl", imageUrl);
-        }
+        }*/
 
         await axios.put(`https://purplleappbackend.onrender.com/products/${id}`, formData);
         alert("Product Updated");
