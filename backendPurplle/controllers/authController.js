@@ -11,6 +11,17 @@ exports.sendOtp = async (req, res) => {
     console.log("BODY:", req.body);
 
     const mobile = req.body?.mobile;
+    //MAIL GO TO USER
+    const registerUser = await require("../models/register").findOne({ mobile });
+
+    if (!registerUser) {
+      return res.status(404).json({
+        success: false,
+        message: "User not registered"
+      });
+    }
+
+    const email = registerUser.email;
 
     if (!mobile) {
       return res.status(400).json({
@@ -39,10 +50,15 @@ exports.sendOtp = async (req, res) => {
       console.log("User After Update:", user);
     }
     try {
-      await sendMail(
+      /*await sendMail(
         "deepikackm09@gmail.com",
         "Purplle App Login OTP",
         `<h2>Your OTP is: ${otp}</h2><p>Valid for 5 minutes</p>`
+      );*/
+      await sendMail(
+        email,
+        "Purplle App Login OTP",
+        `<h2>Your OTP IS : ${otp}</h2><p>Valid for 5 minutes</p>`
       );
     } catch (mailError) {
       console.log("MAIL FAILED BUT CONTINUING:", mailError.message);
