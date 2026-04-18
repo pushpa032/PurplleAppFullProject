@@ -95,7 +95,7 @@ function EditProduct(){
                 />
 
                 <input
-                type="imageUrl"
+                type="text"
                 value={imageUrl}
                 placeholder="Add New Image URL"
                 onChange={(e) => setImageUrl(e.target.value)}
