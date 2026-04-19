@@ -21,9 +21,9 @@ router.post("/", async (req, res) => {
 
     if (imageUrl) {
       // NEW URL
-      newImage = new Carousel({ imageUrl });
+      newImage = new Banner({ imageUrl });
     } else if (req.file) {
-      newImage = new Carousel({ file: req.file.filename });
+      newImage = new Banner({ file: req.file.filename });
     } else {
       return res.status(400).json("Image required");
     }
