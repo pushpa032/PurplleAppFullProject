@@ -13,29 +13,34 @@ function UserProfile() {
 
     if (!user) return <h2>Please login</h2>;
 
+
     return (
-        <div>
-            <h2>User Profile</h2>
+        <div className="profile-container">
+            <div className="profile-card">
 
-            <p>Name: {user.name}</p>
-            <p>Mobile: {user.mobile}</p>
-            <p>Email: {user.email}</p>
+                <h2>User Profile</h2>
 
-            <button
-                onClick={() => {
-                    localStorage.removeItem("user");
-                    navigate("/login");
-                }}
-            >
-                Logout
-            </button>
+                <p><b>Name:</b> {user.name}</p>
+                <p><b>Mobile:</b> {user.mobile}</p>
+                <p><b>Email:</b> {user.email}</p>
 
+                <button
+                    onClick={() => {
+                        localStorage.removeItem("user");
+                        navigate("/login");
+                    }}
+                >
+                    Logout
+                </button>
 
-            <button onClick={() => navigate("/userOrders")}>
-                My Orders
-            </button>
+                <button onClick={() => navigate("/userOrders")}>
+                    My Orders
+                </button>
+
+            </div>
         </div>
     );
+
 }
 
 export default UserProfile;
