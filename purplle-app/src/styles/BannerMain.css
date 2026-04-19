@@ -2,6 +2,7 @@
   margin: 0 auto;
   overflow: hidden;
   position: relative;
+  padding: 0 40px;
 }
 
 .banner-inner {
@@ -18,7 +19,7 @@
 
 .banner-item img {
     width: 100%;
-    height: 400px;
+    height: 250px;
     object-fit: cover;
 }
 
