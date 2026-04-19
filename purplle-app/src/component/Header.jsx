@@ -53,7 +53,7 @@ function Header() {
 
           <div className="icon">
             {user ? (
-              <Link to="/profile">
+              <Link to="/UserProfile">
                 <i className="fa-regular fa-user"></i>
               </Link>
             ) : (
