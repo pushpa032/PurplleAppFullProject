@@ -241,6 +241,62 @@ app.delete("/orders/:id", async (req, res) => {
   res.json({ message: "Deleted" });
 });
 
+
+/* RAZORPAY - CREATE ORDER */
+app.post("/create-order", async (req, res) => {
+  try {
+    const razorpay = new Razorpay({
+      key_id: process.env.RAZORPAY_KEY_ID,
+      key_secret: process.env.RAZORPAY_KEY_SECRET
+    });
+
+    const options = {
+      amount: req.body.amount,
+      currency: req.body.currency || "INR",
+      receipt: "receipt_" + Date.now()
+    };
+
+    const response = await razorpay.orders.create(options);
+
+    res.json({
+      id: response.id,
+      currency: response.currency,
+      amount: response.amount
+    });
+  } catch (err) {
+    console.log("Create order error:", err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/* VERIFY PAYMENT */
+app.post("/verify-payment", (req, res) => {
+  try {
+    const {
+      razorpay_order_id,
+      razorpay_payment_id,
+      razorpay_signature
+    } = req.body;
+
+    const generated = crypto
+      .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
+      .update(`${razorpay_order_id}|${razorpay_payment_id}`)
+      .digest("hex");
+
+    if (generated === razorpay_signature) {
+      return res.json({ success: true, message: "Payment verified" });
+    } else {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid signature"
+      });
+    }
+  } catch (err) {
+    console.log("Verify payment error:", err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
 //  SERVER
 
 app.listen(port, () => {
