@@ -5,6 +5,7 @@ import { CartContext } from "../features/ContextProvider";
 
 function Header() {
   const { cart } = useContext(CartContext)
+  const user = JSON.parse(localStorage.getItem("user"));
   return (
     <header>
 
@@ -44,10 +45,22 @@ function Header() {
           </div>
 
 
-          <div className="icon">
+          /*<div className="icon">
             <Link to="/login">
               <i className="fa-regular fa-face-smile">Login</i>
             </Link>
+          </div>*/
+
+          <div className="icon">
+            {user ? (
+              <Link to="/profile">
+                <i className="fa-regular fa-user"></i>
+              </Link>
+            ) : (
+              <Link to="/login">
+                <i className="fa-regular fa-face-smile">Login</i>
+              </Link>
+            )}
           </div>
 
 

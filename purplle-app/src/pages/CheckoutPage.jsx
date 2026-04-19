@@ -86,7 +86,7 @@ function CheckoutPage() {
     new window.Razorpay(options).open();
   };
 
-  const placeOrder = async (mode, paymentId = "") => {
+  /*const placeOrder = async (mode, paymentId = "") => {
 
     const orderData = {
       products: cart,
@@ -94,11 +94,29 @@ function CheckoutPage() {
       totalItems: totalItem(cart),
       totalPrice: totalPrice(cart),
       paymentId,
+    };*/
+
+  const placeOrder = async (mode, paymentId = "") => {
+
+    const loggedUser = JSON.parse(localStorage.getItem("user"));
+
+    const orderData = {
+      products: cart,
+      user: { ...form, payment: mode },
+
+      mobile: loggedUser?.mobile,
+
+      totalItems: totalItem(cart),
+      totalPrice: totalPrice(cart),
+      paymentId,
     };
 
-    await axios.post(`https://purplleappbackend.onrender.com/orders/add/payment`, orderData);
+    await axios.post(
+      "https://purplleappbackend.onrender.com/orders/add/payment",
+      orderData
+    );
 
-    alert("Order Placed Successfully and payment details sent to yor email ");
+    alert("Order Placed Successfully");
 
     dispatch({ type: "CLEAR_CART" });
     navigate("/");

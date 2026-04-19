@@ -30,7 +30,9 @@ function Otp({ onClose }) {
 
       if (data.success) {
         alert("Login Successful");
+        localStorage.setItem("user", JSON.stringify(data.user));
         navigate("/");
+        window.location.reload();
       } else {
         alert(data.message);
       }

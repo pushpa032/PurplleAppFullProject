@@ -9,6 +9,8 @@ import Otp from "./pages/Otp";
 import AdminPanel from "./pages/AdminPanel";
 import Cart from "./pages/Cart";
 import CheckoutPage from "./pages/CheckoutPage";
+import UserOrders from "./pages/UserOrders";
+import UserProfile from "./pages/UserProfile";
 
 
 function App() {
@@ -23,6 +25,8 @@ function App() {
         <Route path="/single-product-view/:id" element={<SingleProductView/>} />
         <Route path="/login" element={<Login />} />
         <Route path="/userRegistration" element={<UserRegistration/>} />
+        <Route path="/userProfile" element={<UserProfile />} />
+        <Route path="/userOrders" element={<UserOrders />} />
         <Route path="/otp" element={<Otp />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<CheckoutPage />} />
