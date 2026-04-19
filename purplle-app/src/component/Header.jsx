@@ -45,11 +45,11 @@ function Header() {
           </div>
 
 
-          /*<div className="icon">
+          {/*<div className="icon">
             <Link to="/login">
               <i className="fa-regular fa-face-smile">Login</i>
             </Link>
-          </div>*/
+          </div>*/}
 
           <div className="icon">
             {user ? (
