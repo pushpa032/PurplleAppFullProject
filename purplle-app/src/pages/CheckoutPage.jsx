@@ -37,7 +37,7 @@ function CheckoutPage() {
     const res = await loadScript(`https://checkout.razorpay.com/v1/checkout.js`);
     if (!res) return alert("Razorpay failed");
 
-    const { data } = await axios.post(`https://purplleappbackend.onrender.com/orders`, {
+    const { data } = await axios.post(`https://purplleappbackend.onrender.com/create-order`, {
       amount: totalPrice(cart) * 100,
       currency: "INR",
     });
