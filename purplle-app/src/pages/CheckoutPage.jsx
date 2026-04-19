@@ -43,7 +43,7 @@ function CheckoutPage() {
     });
 
     const options = {
-      key: "rzp_test_SYBkOch7KPkXkK",
+      key: "rzp_test_SfDr1mY7vGO9lZ",
       amount: data.amount,
       currency: data.currency,
       order_id: data.id,
