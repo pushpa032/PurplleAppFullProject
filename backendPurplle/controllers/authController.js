@@ -1,7 +1,7 @@
 const User = require("../models/users");
 const crypto = require("crypto");
 const sendMail = require("./sendEmail");
-const registerUser = await require("../models/register");
+const registerUser = require("../models/register");
 
 const generateOTP = () => {
   return crypto.randomInt(100000, 1000000).toString();
