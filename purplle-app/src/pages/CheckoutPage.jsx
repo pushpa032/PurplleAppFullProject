@@ -47,29 +47,39 @@ function CheckoutPage() {
       amount: data.amount,
       currency: data.currency,
       order_id: data.id,
-
       handler: async (response) => {
-        const verify = await axios.post(
-          `https://purplleappbackend.onrender.com/verify-payment`,
-          response
-        );
+        try {
+          const verify = await axios.post(
+            "https://purplleappbackend.onrender.com/verify-payment",
+            response
+          );
 
-        if (verify.data.success) {
-          //shows the payment completed
-          alert("Payment successful");
+          if (verify.data.success) {
 
-          //this will place order
-          await placeOrder("Online", response.razorpay_payment_id);
-           
-        } else {
-          alert("Payment failed");
+            // FIRST place order
+            const orderRes = await placeOrder("Online", response.razorpay_payment_id);
+
+            if (orderRes) {
+              alert("Payment completed & invoice sent to email ");
+
+              dispatch({ type: "CLEAR_CART" });
+              navigate("/");
+            }
+
+          } else {
+            alert("Payment verification failed");
+          }
+
+        } catch (error) {
+          console.log("Payment Error:", error);
+          alert("Something went wrong after payment");
         }
       },
 
       prefill: {
         name: form.fullName,
         contact: form.number,
-        email:form.email
+        email: form.email
       },
     };
 
