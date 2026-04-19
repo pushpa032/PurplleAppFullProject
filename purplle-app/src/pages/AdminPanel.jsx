@@ -9,8 +9,8 @@ import EditProduct from "./EditProduct";
 import ManageUsers from "./ManageUsers";
 import EditUser from "./EditUser";
 import AdminManageOrders from "./AdminManageOrders";
-import AddCarousel from "./AddCarousel";
-import AddBanner from "./AddBanner";
+import AddCarousel from "./AdminAddCarousel";
+import AddBanner from "./AdminAddBanner";
 
 function AdminPanel({ products, setProducts }) {
   return (
