@@ -18,6 +18,7 @@ async function sendMail(to, subject, html) {
       to,
       subject,
       html,
+      attachments,
 });
     console.log("Email sent successfully to", to);
   } catch (error) {
