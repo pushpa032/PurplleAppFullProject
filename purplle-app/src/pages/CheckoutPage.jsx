@@ -64,6 +64,7 @@ function CheckoutPage() {
       prefill: {
         name: form.fullName,
         contact: form.number,
+        email:form.email
       },
     };
 
