@@ -1,7 +1,7 @@
 const User = require("../models/users");
 const crypto = require("crypto");
 const sendMail = require("./sendEmail");
-const registerUser = require("../models/register");
+const RegisterModel = require("../models/register");
 
 const generateOTP = () => {
   return crypto.randomInt(100000, 1000000).toString();
@@ -12,6 +12,13 @@ exports.sendOtp = async (req, res) => {
     console.log("BODY:", req.body);
 
     const mobile = req.body?.mobile;
+    if (!mobile) {
+      return res.status(400).json({
+        success: false,
+        message: "Mobile number required"
+      });
+    }
+
     //MAIL GO TO USER
     const registerUser = await RegisterModel.findOne({ mobile });
     if (!registerUser) {
@@ -23,12 +30,12 @@ exports.sendOtp = async (req, res) => {
 
     const email = registerUser.email;
 
-    if (!mobile) {
+    /*if (!mobile) {
       return res.status(400).json({
         success: false,
         message: "Mobile number required"
       });
-    }
+    }*/
 
     const otp = generateOTP();
     const otpExpiry = new Date(Date.now() + 5 * 60 * 1000);
