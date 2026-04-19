@@ -14,6 +14,7 @@ return(
             <button onClick={() => navigate("/admin/manageUsers")}>Manage Users</button>
             <button onClick={() => navigate("/admin/orders")}>Manage User Orders</button>
             <button onClick={() => navigate("/admin/addCarousel")}>Add Carousel</button>
+            <button onClick={() => navigate("/admin/addBanner")}>Add Banner</button>
         </div>
     </div>
 

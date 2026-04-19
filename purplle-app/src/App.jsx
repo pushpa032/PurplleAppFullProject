@@ -9,7 +9,6 @@ import Otp from "./pages/Otp";
 import AdminPanel from "./pages/AdminPanel";
 import Cart from "./pages/Cart";
 import CheckoutPage from "./pages/CheckoutPage";
-import AdminAddCarousel from "./pages/AdminAddCarousel";
 
 
 function App() {
@@ -20,7 +19,6 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home  />} />
-        <Route path="/admin/addCarousel" element={<AdminAddCarousel />} />
         <Route path="/view-all" element={<ViewAllProduct/>} />
         <Route path="/single-product-view/:id" element={<SingleProductView/>} />
         <Route path="/login" element={<Login />} />

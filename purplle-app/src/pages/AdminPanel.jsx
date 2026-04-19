@@ -9,6 +9,8 @@ import EditProduct from "./EditProduct";
 import ManageUsers from "./ManageUsers";
 import EditUser from "./EditUser";
 import AdminManageOrders from "./AdminManageOrders";
+import AddCarousel from "./AddCarousel";
+import AddBanner from "./AddBanner";
 
 function AdminPanel({ products, setProducts }) {
   return (
@@ -43,7 +45,14 @@ function AdminPanel({ products, setProducts }) {
       path="orders"
       element={<AdminManageOrders/>}
       />
-
+      <Route
+      path="addCarousel"
+      element={<AddCarousel/>}
+      />
+      <Route
+      path="addBanner"
+      element={<AddBanner/>}
+      />
     </Routes>
   );
 }
