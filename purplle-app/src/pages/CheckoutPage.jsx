@@ -60,6 +60,7 @@ function CheckoutPage() {
 
           //this will place order
           await placeOrder("Online", response.razorpay_payment_id);
+           navigate("/");
         } else {
           alert("Payment failed");
         }
