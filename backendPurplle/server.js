@@ -52,13 +52,20 @@ app.post("/verifyOtp", async (req, res) => {
     const { mobile, otp } = req.body;
 
     const user = await UserModel.findOne({ mobile });
+    const registerUser = await RegisterModel.findOne({ mobile });
 
     if (!user) {
       return res.json({ success: false, message: "User not found" });
     }
 
     if (user.verifyOtp === otp) {
-      return res.json({ success: true, message: "OTP verified" });
+      return res.json({ success: true, message: "OTP verified",
+        user: {
+          name: registerUser?.name || "",
+          mobile: registerUser?.mobile || mobile,
+          email: registerUser?.email || ""
+        }
+       });
     }
 
     return res.json({ success: false, message: "Invalid OTP" });
@@ -263,6 +270,13 @@ app.put("/orders/:id", statusChange);
 app.delete("/orders/:id", async (req, res) => {
   await OrderModel.findByIdAndDelete(req.params.id);
   res.json({ message: "Deleted" });
+});
+
+
+//TO GET ONLY USER ORDER
+app.get("/getOrders/:mobile", async (req, res) => {
+  const orders = await OrderModel.find({ mobile: req.params.mobile });
+  res.json({ orders });
 });
 
 

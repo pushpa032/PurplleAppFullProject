@@ -11,6 +11,10 @@ const orderSchema = new mongoose.Schema({
       imageUrl: String,
     }
   ],
+
+  mobile: String,
+
+  
   user: {
     fullName: String,
     number: String,
