@@ -83,7 +83,7 @@ function CheckoutPage() {
 
     await axios.post(`https://purplleappbackend.onrender.com/orders/add/payment`, orderData);
 
-    alert("Order Placed Successfully ");
+    alert("Order Placed Successfully and payment details sent to yor email ");
 
     dispatch({ type: "CLEAR_CART" });
     navigate("/");
