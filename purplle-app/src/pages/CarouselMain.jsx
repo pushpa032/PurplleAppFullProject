@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import CarouselItem from "./CarouselItem";
 import CarouselControls from "./CarouselControls";
-import CarouselIndicators from "./CarouselIndicators";
+import CarouselIndicators from "./CarouselIndicatorsNew";
 import "../styles/CarouselMain.css";
 import axios from "axios";
 
