@@ -78,7 +78,7 @@ const BannerMain = ({
         }}
       >
         {slides.map((slide, index) => (
-          <CarouselItem
+          <BannerItem
             key={index}
             slide={slide.imageUrl}
             stopSlide={stopSlideTimer}
@@ -88,14 +88,14 @@ const BannerMain = ({
       </div>
 
       {indicators && (
-        <CarouselIndicators
+        <BannerIndicators
           slides={slides}
           currentIndex={currentSlide}
           switchIndex={switchIndex}
         />
       )}
 
-      {controls && <CarouselControls prev={prev} next={next} />}
+      {controls && <BannerControls prev={prev} next={next} />}
     </div>
   );
 };
