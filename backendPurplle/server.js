@@ -156,14 +156,22 @@ app.get("/users", async (req, res) => {
   }
 });
 
+
+//user registration
+
 app.post("/registerUser", async (req, res) => {
   try {
     const { name, mobile, email, password } = req.body;
 
-    const existingUser = await RegisterModel.findOne({ mobile });
+    const existingUser = await RegisterModel.findOne({
+      $or: [{ mobile }, { email }]
+    });
 
     if (existingUser) {
-      return res.json({ success: false, message: "User already exists" });
+      return res.json({
+        success: false,
+        message: "User already exists"
+      });
     }
 
     const newUser = new RegisterModel({
@@ -175,10 +183,25 @@ app.post("/registerUser", async (req, res) => {
 
     await newUser.save();
 
-    res.json({ success: true, message: "User Registered Successfully" });
+    res.json({
+      success: true,
+      message: "User Registered Successfully"
+    });
 
   } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
+    console.log("REGISTER ERROR:", error);
+
+    if (error.code === 11000) {
+      return res.json({
+        success: false,
+        message: "User already exists"
+      });
+    }
+
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
   }
 });
 
