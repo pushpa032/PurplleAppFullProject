@@ -12,8 +12,8 @@ exports.sendOtp = async (req, res) => {
 
     const mobile = req.body?.mobile;
     //MAIL GO TO USER
-    const registerUser = await require("../models/register").findOne({ mobile });
-
+    const registerUser = await require("../models/register");
+    const registerUser = await RegisterModel.findOne({ mobile });
     if (!registerUser) {
       return res.status(404).json({
         success: false,
