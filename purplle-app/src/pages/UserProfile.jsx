@@ -20,10 +20,6 @@ function UserProfile() {
             <p>Mobile: {user.mobile}</p>
             <p>Email: {user.email}</p>
 
-            <button onClick={() => navigate("/orders")}>
-                My Orders
-            </button>
-
             <button
                 onClick={() => {
                     localStorage.removeItem("user");
