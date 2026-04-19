@@ -55,6 +55,10 @@ function CheckoutPage() {
         );
 
         if (verify.data.success) {
+          //shows the payment completed
+          alert("Payment successful");
+
+          //this will place order
           await placeOrder("Online", response.razorpay_payment_id);
         } else {
           alert("Payment failed");
