@@ -1,6 +1,7 @@
 const User = require("../models/users");
 const crypto = require("crypto");
 const sendMail = require("./sendEmail");
+const registerUser = await require("../models/register");
 
 const generateOTP = () => {
   return crypto.randomInt(100000, 1000000).toString();
@@ -12,7 +13,6 @@ exports.sendOtp = async (req, res) => {
 
     const mobile = req.body?.mobile;
     //MAIL GO TO USER
-    const registerUser = await require("../models/register");
     const registerUser = await RegisterModel.findOne({ mobile });
     if (!registerUser) {
       return res.status(404).json({
