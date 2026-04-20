@@ -7,6 +7,7 @@ const CartModel = require("./models/cart");
 const authController = require("./controllers/authController");
 const carouselRoutes = require("./routes/carouselRoutes");
 const bannerRoutes = require("./routes/bannerRoutes");
+const bannerRoutesTwo = require("./routes/bannerRoutesTwo");
 const Razorpay = require("razorpay");
 const OrderModel = require("./models/order");
 const { placeOrder } = require("./controllers/orderController");
@@ -24,6 +25,7 @@ app.use(express.json());
 
 app.use("/carousel", carouselRoutes);
 app.use("/banner", bannerRoutes);
+app.use("/banner-two", bannerRoutesTwo);
 
 //  MongoDB connection
 mongoose.connect(process.env.MONGO_URL)
