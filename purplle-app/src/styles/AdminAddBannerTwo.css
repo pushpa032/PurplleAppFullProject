@@ -1,0 +1,24 @@
+.admin-add-banner-two-container {
+  width: 300px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.banner-two-title {
+  margin-bottom: 15px;
+}
+
+.banner-two-input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+}
+
+.banner-two-button {
+  padding: 8px 12px;
+  background-color: purple;
+  color: white;
+  border: none;
+  cursor: pointer;
+}

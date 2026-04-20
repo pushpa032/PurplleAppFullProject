@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom"; 
+import { Routes, Route } from "react-router-dom";
 import LoginAdmin from "./LoginAdmin";
 import AdminDashboard from "./AdminDashboard";
 import ProductAdd from "./ProductAddAdmin";
@@ -11,6 +11,7 @@ import EditUser from "./EditUser";
 import AdminManageOrders from "./AdminManageOrders";
 import AddCarousel from "./AdminAddCarousel";
 import AddBanner from "./AdminAddBanner";
+import AddBannerTwo from "./AdminAddBannerTwo";
 
 function AdminPanel({ products, setProducts }) {
   return (
@@ -23,35 +24,39 @@ function AdminPanel({ products, setProducts }) {
       />
       <Route
         path="viewProduct"
-        element={<ViewProduct products={products} />} 
+        element={<ViewProduct products={products} />}
       />
       <Route
-      path="manageProduct"
-      element={<ManageProduct/>}
+        path="manageProduct"
+        element={<ManageProduct />}
       />
       <Route
-      path="editProduct/:id"
-      element={<EditProduct/>}
+        path="editProduct/:id"
+        element={<EditProduct />}
       />
       <Route
-      path="manageUsers"
-      element={<ManageUsers/>}
+        path="manageUsers"
+        element={<ManageUsers />}
       />
       <Route
-      path="editUser/:id"
-      element={<EditUser/>}
+        path="editUser/:id"
+        element={<EditUser />}
       />
       <Route
-      path="orders"
-      element={<AdminManageOrders/>}
+        path="orders"
+        element={<AdminManageOrders />}
       />
       <Route
-      path="addCarousel"
-      element={<AddCarousel/>}
+        path="addCarousel"
+        element={<AddCarousel />}
       />
       <Route
-      path="addBanner"
-      element={<AddBanner/>}
+        path="addBanner"
+        element={<AddBanner />}
+      />
+      <Route
+        path="addBannerTwo"
+        element={<AddBannerTwo />}
       />
     </Routes>
   );

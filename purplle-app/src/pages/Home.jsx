@@ -4,6 +4,7 @@ import Footer from "../component/Footer";
 import CarouselMain from "./CarouselMain";
 import ProductRow from "./ProductRow";
 import BannerMain from "./BannerMain";
+import BannerMainTwo from "./BannerMainTwo";
 
 
 function Home() {
@@ -14,7 +15,7 @@ function Home() {
         <CarouselMain />
         <ProductRow />
         <BannerMain />
-        <BannerMain />
+        <BannerMainTwo />
       </main>
       <Footer />
     </>
