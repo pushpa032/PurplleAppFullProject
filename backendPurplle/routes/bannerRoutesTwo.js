@@ -5,7 +5,7 @@ const BannerTwo = require("../models/bannerTwo");
 // GET all images
 router.get("/", async (req, res) => {
   try {
-    const data = await Banner.find();
+    const data = await BannerTwo.find();
     res.json(data);
   } catch (err) {
     res.status(500).json("Error fetching images");

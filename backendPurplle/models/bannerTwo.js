@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
-const BannerSchema = new mongoose.Schema({
+const BannerTwoSchema = new mongoose.Schema({
   imageUrl: String
 });
 
-module.exports = mongoose.model("BannerTwo", BannerSchema);
+module.exports = mongoose.model("BannerTwo", BannerTwoSchema);
