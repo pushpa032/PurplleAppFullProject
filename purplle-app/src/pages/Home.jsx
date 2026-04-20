@@ -14,6 +14,7 @@ function Home() {
         <CarouselMain />
         <ProductRow />
         <BannerMain />
+        <BannerMain />
       </main>
       <Footer />
     </>
