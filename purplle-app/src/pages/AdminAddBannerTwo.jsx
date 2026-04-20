@@ -11,7 +11,7 @@ function AdminAddBannerTwo() {
       return;
     }
 
-    axios.post("https://purplleappbackend.onrender.com/banner", {
+    axios.post("https://purplleappbackend.onrender.com/bannerTwo", {
       imageUrl,
     })
       .then(() => {
