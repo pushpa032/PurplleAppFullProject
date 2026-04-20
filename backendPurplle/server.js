@@ -25,7 +25,7 @@ app.use(express.json());
 
 app.use("/carousel", carouselRoutes);
 app.use("/banner", bannerRoutes);
-app.use("/banner-two", bannerRoutesTwo);
+app.use("/bannerTwo", bannerRoutesTwo);
 
 //  MongoDB connection
 mongoose.connect(process.env.MONGO_URL)
