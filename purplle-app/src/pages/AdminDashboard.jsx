@@ -16,6 +16,7 @@ return(
             <button onClick={() => navigate("/admin/addCarousel")}>Add Carousel</button>
             <button onClick={() => navigate("/admin/addBanner")}>Add Banner</button>
             <button onClick={() => navigate("/admin/addBannerTwo")}>Add Banner Two</button>
+            <button onClick={() => navigate("/admin/adminAnalytics")}>Admin Analytics</button>
         </div>
     </div>
 
