@@ -12,10 +12,12 @@ function AdminAnalytics() {
   }
 
   return (
-    <div className='grid-container'>
-      <AdminHeader OpenSidebar={OpenSidebar}/>
-      <AdminSidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar}/>
-      <AdminHome />
+    <div className="adminAnalytics">
+        <div className='grid-container'>
+            <AdminHeader OpenSidebar={OpenSidebar}/>
+            <AdminSidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar}/>
+            <AdminHome />
+        </div>
     </div>
   )
 }
