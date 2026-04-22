@@ -3,13 +3,13 @@ import { FcSalesPerformance } from "react-icons/fc";
 import { FaRupeeSign } from "react-icons/fa";
 import { IoPeopleSharp } from "react-icons/io5";
 import { FaCartArrowDown } from "react-icons/fa";
-import 
+/*import 
  { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } 
- from 'recharts';
+ from 'recharts';*/
 
 function AdminHome() {
 
-    const data = [
+    /*const data = [
         {
           name: 'Page A',
           uv: 4000,
@@ -53,7 +53,7 @@ function AdminHome() {
           amt: 2100,
         },
       ];
-     
+     */
 
   return (
     <main className='admin-home-main-container'>
@@ -92,7 +92,7 @@ function AdminHome() {
             </div>
         </div>
 
-        <div className='charts'>
+        {/*<div className='charts'>
             <ResponsiveContainer width="100%" height="100%">
             <BarChart
             width={500}
@@ -137,7 +137,7 @@ function AdminHome() {
                 </LineChart>
             </ResponsiveContainer>
 
-        </div>
+        </div>*/}
     </main>
   )
 }
