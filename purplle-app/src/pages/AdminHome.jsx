@@ -1,6 +1,6 @@
 import React from 'react'
 import 
-{ BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, BsFillBellFill}
+{ FcSalesPerformance, FaRupeeSign, IoPeopleSharp, FaCartArrowDown   }
  from 'react-icons/bs'
  import 
  { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } 
@@ -63,29 +63,29 @@ function AdminHome() {
         <div className='admin-home-main-cards'>
             <div className='admin-home-card'>
                 <div className='admin-home-card-inner'>
-                    <h3>PRODUCTS</h3>
-                    <BsFillArchiveFill className='admin-home-card_icon'/>
+                    <h3>Number of Sales Count</h3>
+                    <FcSalesPerformance className='admin-home-card_icon'/>
                 </div>
                 <h1>300</h1>
             </div>
             <div className='admin-home-card'>
                 <div className='admin-home-card-inner'>
-                    <h3>CATEGORIES</h3>
-                    <BsFillGrid3X3GapFill className='admin-home-card_icon'/>
+                    <h3>Number of Payment Recieved</h3>
+                    <FaRupeeSign className='admin-home-card_icon'/>
                 </div>
                 <h1>12</h1>
             </div>
             <div className='admin-home-card'>
                 <div className='admin-home-card-inner'>
-                    <h3>CUSTOMERS</h3>
-                    <BsPeopleFill className='admin-home-card_icon'/>
+                    <h3>Number of SignUp Counts</h3>
+                    <IoPeopleSharp className='admin-home-card_icon'/>
                 </div>
                 <h1>33</h1>
             </div>
             <div className='admin-home-card'>
                 <div className='admin-home-card-inner'>
-                    <h3>ALERTS</h3>
-                    <BsFillBellFill className='admin-home-card_icon'/>
+                    <h3>Number of Orders</h3>
+                    <FaCartArrowDown className='admin-home-card_icon'/>
                 </div>
                 <h1>42</h1>
             </div>

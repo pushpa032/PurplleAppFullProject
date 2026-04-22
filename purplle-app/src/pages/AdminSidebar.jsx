@@ -1,7 +1,6 @@
 import React from 'react'
 import 
-{BsCart3, BsGrid1X2Fill, BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, 
-  BsListCheck, BsMenuButtonWideFill, BsFillGearFill}
+{BsCart3, BiSolidDashboard, FcSalesPerformance, FaRupeeSign, IoPeopleSharp, FaCartArrowDown  }
  from 'react-icons/bs'
 
 function AdminSidebar({openSidebarToggle, OpenSidebar}) {
@@ -17,37 +16,27 @@ function AdminSidebar({openSidebarToggle, OpenSidebar}) {
         <ul className='sidebar-list'>
             <li className='sidebar-list-item'>
                 <a href="">
-                    <BsGrid1X2Fill className='icon'/> Dashboard
+                    <BiSolidDashboard className='icon'/> Dashboard
                 </a>
             </li>
             <li className='sidebar-list-item'>
                 <a href="">
-                    <BsFillArchiveFill className='icon'/> Products
+                    <FcSalesPerformance className='icon'/> Number of Sales Count
                 </a>
             </li>
             <li className='sidebar-list-item'>
                 <a href="">
-                    <BsFillGrid3X3GapFill className='icon'/> Categories
+                    <FaRupeeSign className='icon'/> Number of Payment Recieved
                 </a>
             </li>
             <li className='sidebar-list-item'>
                 <a href="">
-                    <BsPeopleFill className='icon'/> Customers
+                    <IoPeopleSharp className='icon'/> Number of SignUp Counts
                 </a>
             </li>
             <li className='sidebar-list-item'>
                 <a href="">
-                    <BsListCheck className='icon'/> Inventory
-                </a>
-            </li>
-            <li className='sidebar-list-item'>
-                <a href="">
-                    <BsMenuButtonWideFill className='icon'/> Reports
-                </a>
-            </li>
-            <li className='sidebar-list-item'>
-                <a href="">
-                    <BsFillGearFill className='icon'/> Setting
+                    <FaCartArrowDown className='icon'/> Number of Orders
                 </a>
             </li>
         </ul>
