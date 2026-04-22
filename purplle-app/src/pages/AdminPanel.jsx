@@ -12,6 +12,7 @@ import AdminManageOrders from "./AdminManageOrders";
 import AddCarousel from "./AdminAddCarousel";
 import AddBanner from "./AdminAddBanner";
 import AddBannerTwo from "./AdminAddBannerTwo";
+import AdminAnalytics from "./AdminAnalytics";
 
 function AdminPanel({ products, setProducts }) {
   return (
@@ -57,6 +58,10 @@ function AdminPanel({ products, setProducts }) {
       <Route
         path="addBannerTwo"
         element={<AddBannerTwo />}
+      />
+      <Route
+        path="adminAnalytics"
+        element={<AdminAnalytics />}
       />
     </Routes>
   );
