@@ -1,6 +1,6 @@
 import React from 'react'
 import 
-{BsCart3, MdDashboard, FcSalesPerformance, FaRupeeSign, IoPeopleSharp, FaCartArrowDown  }
+{BsCart3, FcSalesPerformance, FaRupeeSign, IoPeopleSharp, FaCartArrowDown  }
  from 'react-icons/bs';
 
 function AdminSidebar({openSidebarToggle, OpenSidebar}) {
@@ -14,11 +14,6 @@ function AdminSidebar({openSidebarToggle, OpenSidebar}) {
         </div>
 
         <ul className='sidebar-list'>
-            <li className='sidebar-list-item'>
-                <a href="">
-                    <MdDashboard className='icon'/> Dashboard
-                </a>
-            </li>
             <li className='sidebar-list-item'>
                 <a href="">
                     <FcSalesPerformance className='icon'/> Number of Sales Count
