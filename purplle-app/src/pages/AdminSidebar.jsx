@@ -1,6 +1,6 @@
 import React from 'react'
 import 
-{BsCart3, FaSalesforce, FaRupeeSign, IoPeopleSharp, FaCartArrowDown  }
+{BsCart3, FcSalesPerformance, FaRupeeSign, IoPeopleSharp, FaCartArrowDown  }
  from 'react-icons/bs';
 
 function AdminSidebar({openSidebarToggle, OpenSidebar}) {
@@ -16,7 +16,7 @@ function AdminSidebar({openSidebarToggle, OpenSidebar}) {
         <ul className='sidebar-list'>
             <li className='sidebar-list-item'>
                 <a href="">
-                    <FaSalesforce className='icon'/> Number of Sales Count
+                    <FcSalesPerformance className='icon'/> Number of Sales Count
                 </a>
             </li>
             <li className='sidebar-list-item'>
