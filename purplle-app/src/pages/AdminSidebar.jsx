@@ -1,7 +1,11 @@
 import React from 'react'
-import 
-{BsCart3, FcSalesPerformance, FaRupeeSign, IoPeopleSharp, FaCartArrowDown  }
- from 'react-icons/bs';
+import {BsCart3} from 'react-icons/bs';
+
+import { FcSalesPerformance } from "react-icons/fc";
+import { FaRupeeSign } from "react-icons/fa";
+import { IoPeopleSharp } from "react-icons/io5";
+import { FaCartArrowDown } from "react-icons/fa";
+
 
 function AdminSidebar({openSidebarToggle, OpenSidebar}) {
   return (

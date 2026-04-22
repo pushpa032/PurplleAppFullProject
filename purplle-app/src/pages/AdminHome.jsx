@@ -1,8 +1,9 @@
 import React from 'react'
+import { FcSalesPerformance } from "react-icons/fc";
+import { FaRupeeSign } from "react-icons/fa";
+import { IoPeopleSharp } from "react-icons/io5";
+import { FaCartArrowDown } from "react-icons/fa";
 import 
-{ FcSalesPerformance, FaRupeeSign, IoPeopleSharp, FaCartArrowDown   }
- from 'react-icons/bs';
- import 
  { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } 
  from 'recharts';
 
