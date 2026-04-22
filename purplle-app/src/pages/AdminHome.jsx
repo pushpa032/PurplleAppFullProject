@@ -1,6 +1,6 @@
 import React from 'react'
 import 
-{ FcSalesPerformance, FaRupeeSign, IoPeopleSharp, FaCartArrowDown   }
+{ FaSalesforce, FaRupeeSign, IoPeopleSharp, FaCartArrowDown   }
  from 'react-icons/bs';
  import 
  { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } 
@@ -64,7 +64,7 @@ function AdminHome() {
             <div className='admin-home-card'>
                 <div className='admin-home-card-inner'>
                     <h3>Number of Sales Count</h3>
-                    <FcSalesPerformance className='admin-home-card_icon'/>
+                    <FaSalesforce className='admin-home-card_icon'/>
                 </div>
                 <h1>300</h1>
             </div>
