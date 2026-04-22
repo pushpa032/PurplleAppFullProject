@@ -1,7 +1,7 @@
 import React from 'react'
 import 
 {BsCart3, BiSolidDashboard, FcSalesPerformance, FaRupeeSign, IoPeopleSharp, FaCartArrowDown  }
- from 'react-icons/bs'
+ from 'react-icons/bs';
 
 function AdminSidebar({openSidebarToggle, OpenSidebar}) {
   return (

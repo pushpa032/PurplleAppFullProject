@@ -1,7 +1,7 @@
 import React from 'react'
 import 
 { FcSalesPerformance, FaRupeeSign, IoPeopleSharp, FaCartArrowDown   }
- from 'react-icons/bs'
+ from 'react-icons/bs';
  import 
  { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } 
  from 'recharts';
