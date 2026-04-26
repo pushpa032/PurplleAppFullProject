@@ -22,15 +22,6 @@
   margin: 5px 0;
 }
 
-.user-cancel-button {
-  margin-top: 10px;
-  padding: 8px 12px;
-  background-color: red;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
 
 .user-order-products {
   display: flex;
