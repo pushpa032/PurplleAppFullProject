@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function Login({ onClose }) {
   const [mobile, setMobile] = useState("");
+  const [allow, setAllow] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -13,6 +14,12 @@ function Login({ onClose }) {
       alert("Please enter your mobile number");
       return;
     }
+
+     if (!allow) {
+      alert("Please tick on allow");
+      return;
+    }
+
 
     try {
       const res = await fetch(`https://purplleappbackend.onrender.com/sendOtp`, {
@@ -64,7 +71,12 @@ function Login({ onClose }) {
           />
 
           <div>
-            <input type="checkbox" required />
+            <input
+              type="checkbox"
+              checked={allow}
+              onChange={(e) => setAllow(e.target.checked)}
+            />
+           
             <p className="allow">
               Allow shiprocket to fetch address based on past orders.
             </p>
