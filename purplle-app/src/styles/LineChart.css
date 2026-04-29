@@ -1,0 +1,11 @@
+.line-chart{
+    display: flex;
+    height: 100%;
+
+}
+
+.line-chart-info{
+    display: flex;
+    flex-direction: column;
+    
+}
