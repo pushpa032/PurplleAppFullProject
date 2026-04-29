@@ -31,13 +31,9 @@ function UserRegistration() {
       else {
         alert(res.data.message || "User already exists");
         navigate("/login");
-        alert(res.data.message);
       }
 
-    } catch (err) {
-      console.log(err);
-      alert("Error registering user");
-    }
+    } 
   };
 
   return (
