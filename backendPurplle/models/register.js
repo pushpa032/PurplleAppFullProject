@@ -26,6 +26,13 @@ const RegisterSchema = new mongoose.Schema({
     required: true
   },
 
+  createdAt: {
+  type: Date,
+  default: Date.now
+},
+
+timestamps: true,  //automatically  gives the createdAt and updatedAt
+
 });
 
 
