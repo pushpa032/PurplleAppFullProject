@@ -31,12 +31,14 @@ function UserRegistration() {
       else {
         alert(res.data.message || "User already exists");
         navigate("/login");
-      } catch(error) {
+      } 
+    }  
+     catch(error) {
         console.log(error);
         alert("Error registering user");
       }
 
-    } 
+   
   };
 
   return (
