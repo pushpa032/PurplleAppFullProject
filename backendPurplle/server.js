@@ -60,7 +60,7 @@ app.post("/verifyOtp", async (req, res) => {
       return res.json({ success: false, message: "User not found" });
     }
 
-    if (user.verifyOtp === otp && user.otpExpiry > new Date()) {
+    if (user.verifyOtp === otp ) {
       return res.json({ success: true, message: "OTP verified",
         user: {
           name: registerUser?.name || "",
