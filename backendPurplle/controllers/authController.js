@@ -58,7 +58,6 @@ exports.sendOtp = async (req, res) => {
       await user.save();
       console.log("User After Update:", user);
     }
-    try {
       /*await sendMail(
         "deepikackm09@gmail.com",
         "Purplle App Login OTP",
@@ -69,7 +68,7 @@ exports.sendOtp = async (req, res) => {
       sendMail(
         email,
         "Purplle App Login OTP",
-        `<h2>Your OTP is : ${otp}</h2><Valid for 5 minutes</p>`
+        `<h2>Your OTP is : ${otp}</h2><p>Valid for 5 minutes</p>`
       ).catch((error) => {
         console.log("ERROR:", error.message);
       });
