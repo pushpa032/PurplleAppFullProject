@@ -75,4 +75,14 @@ exports.sendOtp = async (req, res) => {
       ).catch((error) => {
         console.log("ERROR:", error.message);
       });
+
+  } catch(error){
+    console.log("Full error", error);
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+
+
+  }
 };
