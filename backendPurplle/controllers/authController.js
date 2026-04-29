@@ -63,15 +63,18 @@ exports.sendOtp = async (req, res) => {
         "Purplle App Login OTP",
         `<h2>Your OTP is: ${otp}</h2><p>Valid for 5 minutes</p>`
       );*/
-      res.json({ success: true, message: "OTP Sent Successfully", mobile });
 
-      sendMail(
+     sendMail(
         email,
         "Purplle App Login OTP",
         `<h2>Your OTP is : ${otp}</h2><p>Valid for 5 minutes</p>`
       ).catch((error) => {
         console.log("ERROR:", error.message);
       });
+
+      res.json({ success: true, message: "OTP Sent Successfully", mobile });
+
+      
 
   } catch(error){
     console.log("Full error", error);
