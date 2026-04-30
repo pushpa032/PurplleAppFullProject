@@ -12,6 +12,7 @@ exports.sendOtp = async (req, res) => {
     console.log("BODY:", req.body);
 
     const mobile = req.body?.mobile;
+
     if (!mobile) {
       return res.status(400).json({
         success: false,
@@ -19,8 +20,8 @@ exports.sendOtp = async (req, res) => {
       });
     }
 
-    //MAIL GO TO USER
     const registerUser = await RegisterModel.findOne({ mobile });
+
     if (!registerUser) {
       return res.status(404).json({
         success: false,
@@ -29,51 +30,39 @@ exports.sendOtp = async (req, res) => {
     }
 
     const email = registerUser.email;
-
-    /*if (!mobile) {
-      return res.status(400).json({
-        success: false,
-        message: "Mobile number required"
-      });
-    }*/
+    console.log("EMAIL:", email);
 
     const otp = generateOTP();
     const otpExpiry = new Date(Date.now() + 5 * 60 * 1000);
 
     let user = await User.findOne({ mobile });
-    console.log("User Found:", user);
 
     if (!user) {
-      console.log("Creating new user");
       user = await User.create({
         mobile,
         verifyOtp: otp,
         otpExpiry: otpExpiry,
       });
-      console.log("New User Created:", user);
     } else {
-      console.log("Updating existing user");
       user.verifyOtp = otp;
       user.otpExpiry = otpExpiry;
       await user.save();
-      console.log("User After Update:", user);
-    }
-    /*await sendMail(
-        "deepikackm09@gmail.com",
-        "Purplle App Login OTP",
-        `<h2>Your OTP is: ${otp}</h2><p>Valid for 5 minutes</p>`
-      );*/
-    try {
-      await sendMail(
-        email,
-        "Purplle App Login OTP",
-        `<h2>Your OTP is : ${otp}</h2><p>Valid for 5 minutes</p>`,
-      );
-    } catch (err) {
-      console.log("MAIL ERROR:", err.message);
     }
 
-    
+    res.json({
+      success: true,
+      message: "OTP Generated",
+      mobile,
+    });
+
+    sendMail(
+      email,
+      "Purplle App Login OTP",
+      `<h2>Your OTP is : ${otp}</h2><p>Valid for 5 minutes</p>`
+    )
+      .then(() => console.log("MAIL SENT"))
+      .catch((err) => console.log("MAIL ERROR:", err.message));
+
   } catch (error) {
     console.log("Full error", error);
     res.status(500).json({
