@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const mongoose = require("mongoose");
 const UserModel = require("./models/users");
@@ -14,7 +16,6 @@ const { placeOrder } = require("./controllers/orderController");
 const { statusChange } = require("./controllers/statusChange");
 const crypto = require("crypto");
 
-require("dotenv").config();
 
 const app = express();
 const port = process.env.PORT || 5000;
