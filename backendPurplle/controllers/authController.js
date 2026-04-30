@@ -15,7 +15,7 @@ exports.sendOtp = async (req, res) => {
     if (!mobile) {
       return res.status(400).json({
         success: false,
-        message: "Mobile number required"
+        message: "Mobile number required",
       });
     }
 
@@ -24,7 +24,7 @@ exports.sendOtp = async (req, res) => {
     if (!registerUser) {
       return res.status(404).json({
         success: false,
-        message: "User not registered"
+        message: "User not registered",
       });
     }
 
@@ -48,7 +48,7 @@ exports.sendOtp = async (req, res) => {
       user = await User.create({
         mobile,
         verifyOtp: otp,
-        otpExpiry: otpExpiry
+        otpExpiry: otpExpiry,
       });
       console.log("New User Created:", user);
     } else {
@@ -58,31 +58,27 @@ exports.sendOtp = async (req, res) => {
       await user.save();
       console.log("User After Update:", user);
     }
-      /*await sendMail(
+    /*await sendMail(
         "deepikackm09@gmail.com",
         "Purplle App Login OTP",
         `<h2>Your OTP is: ${otp}</h2><p>Valid for 5 minutes</p>`
       );*/
-
-     sendMail(
+    try {
+      await sendMail(
         email,
         "Purplle App Login OTP",
-        `<h2>Your OTP is : ${otp}</h2><p>Valid for 5 minutes</p>`
-      ).catch((error) => {
-        console.log("ERROR:", error.message);
-      });
+        `<h2>Your OTP is : ${otp}</h2><p>Valid for 5 minutes</p>`,
+      );
+    } catch (err) {
+      console.log("MAIL ERROR:", err.message);
+    }
 
-      res.json({ success: true, message: "OTP Sent Successfully", mobile });
-
-      
-
-  } catch(error){
+    
+  } catch (error) {
     console.log("Full error", error);
     res.status(500).json({
       success: false,
-      message: error.message
+      message: error.message,
     });
-
-
   }
 };
