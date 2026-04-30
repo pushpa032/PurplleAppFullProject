@@ -8,7 +8,7 @@ const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport({
   host: 'smtp-relay.brevo.com',
   port: 587,
-  secure: true,
+  secure: false,
 
   family: 4,
 
@@ -30,8 +30,8 @@ transporter.verify((error, success) => {
 async function sendMail(to, subject, html,  attachments) {
   try {
     await transporter.sendMail({
-      //from: (process.env.EMAIL_USER),
-      from: "pushpackm09@gmail.com",
+      from: (process.env.EMAIL_USER),
+      //from: "pushpackm09@gmail.com",
       to,
       subject,
       html,
