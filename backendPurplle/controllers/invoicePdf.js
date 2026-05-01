@@ -61,7 +61,6 @@ function generateInvoicePDF(orderData, orderId) {
 
 module.exports = generateInvoicePDF;   */
 
-
 const PDFDocument = require("pdfkit");
 const fs = require("fs");
 const path = require("path");
@@ -84,17 +83,16 @@ function generateInvoicePDF(orderData, orderId) {
       doc.pipe(stream);
 
       // HEADER
-      doc
-        .fillColor("#6a1b9a")
-        .fontSize(24)
-        .text("PURPLLE APP", 50, 50);
+      doc.fillColor("#6a1b9a").fontSize(24).text("PURPLLE APP", 50, 50);
 
       doc
         .fontSize(12)
         .fillColor("#000")
-        .text(`Invoice No: ${orderId}`, 400, 50, { align: "right" })
-        .text(new Date().toDateString(), 400, 65, { align: "right" });
+        .text(`Invoice No: ${orderId}`, 350, 50);
 
+      doc.text(`Date: ${new Date().toDateString()}`, 350, 70);
+
+      
       doc.moveDown(2);
 
       // CUSTOMER DETAILS
@@ -110,9 +108,7 @@ function generateInvoicePDF(orderData, orderId) {
       // PAYMENT INFO (right side)
       doc.fontSize(12).text("Payment Info:", 350, 120);
 
-      doc
-        .fontSize(11)
-        .text(orderData.user.payment, 350, 140);
+      doc.fontSize(11).text(orderData.user.payment, 350, 140);
 
       // TABLE HEADER
       doc.moveDown(3);
@@ -126,7 +122,10 @@ function generateInvoicePDF(orderData, orderId) {
         .text("Qty", 320, tableTop)
         .text("Amount", 400, tableTop);
 
-      doc.moveTo(50, tableTop + 15).lineTo(550, tableTop + 15).stroke();
+      doc
+        .moveTo(50, tableTop + 15)
+        .lineTo(550, tableTop + 15)
+        .stroke();
 
       // TABLE ROWS
       let y = tableTop + 30;
@@ -150,7 +149,11 @@ function generateInvoicePDF(orderData, orderId) {
       const summaryTop = y + 20;
 
       doc.text(`Subtotal: Rs.${orderData.subtotal}`, 350, summaryTop);
-      doc.text(`GST (${orderData.gstRate}%): Rs.${orderData.gstAmount}`, 350, summaryTop + 20);
+      doc.text(
+        `GST (${orderData.gstRate}%): Rs.${orderData.gstAmount}`,
+        350,
+        summaryTop + 20,
+      );
       doc
         .fontSize(13)
         .text(`Total: Rs.${orderData.totalPrice}`, 350, summaryTop + 45);
@@ -168,7 +171,6 @@ function generateInvoicePDF(orderData, orderId) {
 
       stream.on("finish", () => resolve(filePath));
       stream.on("error", (err) => reject(err));
-
     } catch (error) {
       reject(error);
     }
