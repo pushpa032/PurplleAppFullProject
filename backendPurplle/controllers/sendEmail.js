@@ -1,45 +1,37 @@
-const nodemailer = require('nodemailer');
-
-
-//console.log("EMAIL_USER:", process.env.EMAIL_USER);
-//console.log("EMAIL_PASS:", process.env.EMAIL_PASS);
-
+const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({
-  //host: 'gmail',
-  service:"gmail",
-  //port: 587,
-  //secure: false,
-
+  host: "smtp-relay.brevo.com",
+  port: 587,
+  secure: false,
   auth: {
-    user: (process.env.EMAIL_USER),
-    pass: (process.env.EMAIL_PASS)
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
   },
+  family: 4,
 });
 
-
-transporter.verify((error, success) => {
+transporter.verify((error) => {
   if (error) {
     console.log("SMTP ERROR:", error);
   } else {
-    console.log("SMTP READY");
+    console.log("SMTP READY ");
   }
 });
 
-async function sendMail(to, subject, html,  attachments) {
+async function sendMail(to, subject, html, attachments) {
   try {
     await transporter.sendMail({
-      from: (process.env.EMAIL_USER),
-      //from: "pushpackm09@gmail.com",
+      from: "pushpackm09@gmail.com", 
       to,
       subject,
       html,
       attachments,
-});
-    console.log("Email sent successfully to", to);
+    });
+
+    console.log("Email sent");
   } catch (error) {
-    console.log("Email sending failed:", error);
-    throw error;
+    console.log("Email failed:", error);
   }
 }
 
