@@ -41,7 +41,7 @@ module.exports = sendMail;*/
 
 const axios = require("axios");
 
-async function sendMail(to, subject, html) {
+async function sendMail(to, subject, html, attachments) {
   try {
     const response = await axios.post(
       "https://api.brevo.com/v3/smtp/email",
@@ -53,6 +53,7 @@ async function sendMail(to, subject, html) {
         to: [{ email: to }],
         subject: subject,
         htmlContent: html,
+        attachment: attachments,
       },
       {
         headers: {
