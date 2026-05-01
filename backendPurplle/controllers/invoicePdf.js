@@ -88,11 +88,11 @@ function generateInvoicePDF(orderData, orderId) {
       doc
         .fontSize(12)
         .fillColor("#000")
-        .text(`Invoice No: ${orderId}`, 350, 50);
+        .text(`Invoice No: ${orderId}`, 350, 50, { width: 250 });
 
-      doc.text(`Date: ${new Date().toDateString()}`, 350, 70);
+      doc.text(`Date: ${new Date().toDateString()}`, 350, 70, { width: 250 });
 
-      
+
       doc.moveDown(2);
 
       // CUSTOMER DETAILS
