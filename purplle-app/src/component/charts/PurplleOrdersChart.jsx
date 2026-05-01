@@ -1,32 +1,42 @@
-import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
+import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend } from "recharts";
 
 const PurplleOrdersChart = ({ orders }) => {
 
-  const data = Object.values(
-    orders.reduce((acc, order) => {
-      const date = new Date(order.createdAt).toLocaleDateString();
+  // Count COD vs Online
+  const paymentData = [
+    {
+      name: "COD",
+      value: orders.filter(o => o.user?.payment === "COD").length
+    },
+    {
+      name: "Online",
+      value: orders.filter(o => o.user?.payment !== "COD").length
+    }
+  ];
 
-      if (!acc[date]) {
-        acc[date] = { date, orders: 0 };
-      }
-
-      acc[date].orders += 1;
-      return acc;
-    }, {})
-  );
+  const COLORS = ["#ff9800", "#4caf50"]; // COD = orange, Online = green
 
   return (
     <div className="chart-box">
-      <h3> Total Orders</h3>
+      <h3>Payment Distribution</h3>
 
       <ResponsiveContainer width="100%" height={300}>
-        <BarChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="date" />
-          <YAxis />
+        <PieChart>
+          <Pie
+            data={paymentData}
+            dataKey="value"
+            nameKey="name"
+            outerRadius={100}
+            label
+          >
+            {paymentData.map((entry, index) => (
+              <Cell key={index} fill={COLORS[index]} />
+            ))}
+          </Pie>
+
           <Tooltip />
-          <Bar dataKey="orders" />
-        </BarChart>
+          <Legend />
+        </PieChart>
       </ResponsiveContainer>
 
     </div>

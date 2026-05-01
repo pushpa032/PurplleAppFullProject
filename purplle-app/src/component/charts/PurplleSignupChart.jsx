@@ -1,4 +1,4 @@
-import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
+import { ScatterChart, Scatter, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
 
 const PurplleSignupChart = ({ users }) => {
 
@@ -17,17 +17,19 @@ const PurplleSignupChart = ({ users }) => {
 
   return (
     <div className="chart-box">
-      <h3>Signup Count</h3>
+      <h3>Signup Activity</h3>
 
       <ResponsiveContainer width="100%" height={300}>
-        <LineChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" />
+        <ScatterChart>
+          <CartesianGrid />
           <XAxis dataKey="date" />
-          <YAxis />
+          <YAxis dataKey="users" />
           <Tooltip />
-          <Line type="monotone" dataKey="users" />
-        </LineChart>
+
+          <Scatter data={data} fill="#6a1b9a" />
+        </ScatterChart>
       </ResponsiveContainer>
+
     </div>
   );
 };
