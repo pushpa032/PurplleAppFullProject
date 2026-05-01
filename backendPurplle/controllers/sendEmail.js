@@ -40,6 +40,7 @@ module.exports = sendMail;*/
 
 
 const axios = require("axios");
+const fs = require("fs");
 
 async function sendMail(to, subject, html, attachment) {
   try {
@@ -53,7 +54,10 @@ async function sendMail(to, subject, html, attachment) {
         to: [{ email: to }],
         subject: subject,
         htmlContent: html,
-        attachment: attachment,
+        attachment: attachment?.map(file => ({  //to convert the file base64 for brevo.
+          name: file.filename,
+          content: fs.readFileSync(file.path, "base64")
+        }))
       },
       {
         headers: {
