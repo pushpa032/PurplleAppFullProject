@@ -19,8 +19,24 @@ function generateInvoicePDF(orderData, orderId) {
 
       doc.pipe(stream);
 
-      doc.fontSize(20).text("ORDER INVOICE", { align: "center" });
+      //  HEADER 
+      doc
+        .fillColor("#6a1b9a")
+        .fontSize(22)
+        .text("PURPLLE APP", { align: "center" });
+
+      doc.moveDown(0.3);
+
+      doc
+        .fillColor("#000")
+        .fontSize(18)
+        .text("ORDER INVOICE", { align: "center" });
+
       doc.moveDown();
+
+      // CUSTOMER BOX
+      doc.rect(50, doc.y, 500, 90).stroke();
+      doc.moveDown(0.5);
 
       doc.fontSize(12).text(`Order ID: ${orderId}`);
       doc.text(`Customer Name: ${orderData.user.fullName}`);
@@ -30,24 +46,45 @@ function generateInvoicePDF(orderData, orderId) {
       doc.text(`Payment Method: ${orderData.user.payment}`);
       doc.moveDown();
 
-      doc.fontSize(14).text("Products");
+      // PRODUCTS TITLE 
+      doc
+        .fillColor("#6a1b9a")
+        .fontSize(14)
+        .text("Products", { underline: true });
+
       doc.moveDown(0.5);
 
+      // PRODUCTS LOOP 
       orderData.products.forEach((item, index) => {
         const itemTotal = Number(item.price) * Number(item.quantity);
-        doc.text(
-          `${index + 1}. ${item.name} - Rs.${item.price} x ${item.quantity} = Rs.${itemTotal}`
-        );
+
+        doc
+          .fillColor("#000")
+          .fontSize(12)
+          .text(`${index + 1}. ${item.name}`, { continued: true })
+          .text(`   Rs.${item.price} x ${item.quantity}`, { align: "right" });
+
+        doc.text(`Total: Rs.${itemTotal}`, { align: "right" });
+        doc.moveDown(0.5);
       });
 
+      //  PRICE BOX
       doc.moveDown();
+      doc.rect(300, doc.y, 250, 90).stroke();
+      doc.moveDown(0.5);
+
       doc.text(`Total Items: ${orderData.totalItems}`);
       doc.text(`Subtotal: Rs.${orderData.subtotal}`);
       doc.text(`GST (${orderData.gstRate}%): Rs.${orderData.gstAmount}`);
       doc.text(`Total Price: Rs.${orderData.totalPrice}`);
 
       doc.moveDown();
-      doc.text("Thank you for your order!", { align: "center" });
+
+      //  FOOTER 
+      doc
+        .fillColor("#6a1b9a")
+        .fontSize(12)
+        .text("Thank you for shopping with Purplle!", { align: "center" });
 
       doc.end();
 
@@ -59,4 +96,4 @@ function generateInvoicePDF(orderData, orderId) {
   });
 }
 
-module.exports = generateInvoicePDF;   
+module.exports = generateInvoicePDF;
