@@ -278,7 +278,7 @@ app.delete("/orders/:id", async (req, res) => {
 
 //TO GET ONLY USER ORDER
 app.get("/getOrders/:mobile", async (req, res) => {
-  const orders = await OrderModel.find({ mobile: req.params.mobile });
+  const orders = await OrderModel.find({ mobile: req.params.mobile })
   .sort({ createdAt: -1 });
   res.json({ orders });
 });
