@@ -50,13 +50,6 @@
   margin-bottom: 20px;
 }
 
-.edit {
-  color: #a020f0;
-  font-weight: 600;
-  margin-left: 10px;
-  cursor: pointer;
-}
-
 
 .otp-inputs {
   display: flex;

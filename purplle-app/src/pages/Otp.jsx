@@ -54,7 +54,7 @@ function Otp({ onClose }) {
         </h3>
 
         <div className="otp-number">
-          {mobile} <span className="edit">Edit</span>
+          {mobile} 
         </div>
 
         <div className="otp-inputs">
