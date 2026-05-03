@@ -13,12 +13,14 @@
   margin-bottom: 20px;
 }
 
-.user-order-card {
-  background: white;
-  padding: 15px;
-  width: 250px;           /* smaller width for multiple cards */
-  border-radius: 8px;
-  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+.user-orders-container {
+  padding: 30px;
+  background-color: #f9f9f9;
+  min-height: 80vh;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
 }
 
 .user-order-card p {
