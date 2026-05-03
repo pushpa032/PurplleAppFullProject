@@ -16,6 +16,7 @@ function Home() {
         <ProductRow />
         <BannerMain />
         <BannerMainTwo />
+        <ProductRow />
       </main>
       <Footer />
     </>
