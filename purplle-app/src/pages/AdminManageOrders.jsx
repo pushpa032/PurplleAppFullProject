@@ -11,7 +11,7 @@ function AdminManageOrders() {
 
     const res = await axios.put(
       `https://purplleappbackend.onrender.com/orders/${id}`,
-      { status }
+      { status },
     );
 
     getOrders();
@@ -23,7 +23,8 @@ function AdminManageOrders() {
   }, []);
 
   const getOrders = () => {
-    axios.get(`https://purplleappbackend.onrender.com/orders`)
+    axios
+      .get(`https://purplleappbackend.onrender.com/orders`)
       .then((res) => {
         setOrders(res.data);
       })
@@ -31,12 +32,13 @@ function AdminManageOrders() {
   };
 
   const deleteOrder = (id) => {
-    axios.delete(`https://purplleappbackend.onrender.com/orders/${id}`)
+    axios
+      .delete(`https://purplleappbackend.onrender.com/orders/${id}`)
       .then(() => {
         alert("Order Deleted");
         getOrders();
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -46,6 +48,8 @@ function AdminManageOrders() {
         <thead>
           <tr>
             <th>ID</th>
+            <th>Name</th>
+            <th>Email ID</th>
             <th>Items</th>
             <th>Total</th>
             <th>Date</th>
@@ -59,8 +63,9 @@ function AdminManageOrders() {
         <tbody>
           {orders.map((order) => (
             <tr key={order._id}>
-
               <td>{order._id}</td>
+              <td>{order.user?.fullName}</td>
+              <td>{order.user?.email}</td>
 
               <td>
                 {order.products?.map((item, i) => (
@@ -86,18 +91,10 @@ function AdminManageOrders() {
                     </option>
                   ))}
                 </select>
-
               </td>
               <td>
-                <button
-                  onClick={() => deleteOrder(order._id)}
-                >
-                  Delete
-                </button>
-
-
+                <button onClick={() => deleteOrder(order._id)}>Delete</button>
               </td>
-
             </tr>
           ))}
         </tbody>
