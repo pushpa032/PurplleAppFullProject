@@ -2,6 +2,10 @@
   padding: 30px;
   background-color: #f9f9f9;
   min-height: 80vh;
+  display: flex;
+  flex-wrap: wrap;        /* allows wrapping */
+  justify-content: center;
+  gap: 20px;              /* space between cards */
 }
 
 .user-orders-container h2 {
@@ -12,8 +16,7 @@
 .user-order-card {
   background: white;
   padding: 15px;
-  margin: 15px auto;
-  width: 350px;
+  width: 250px;           /* smaller width for multiple cards */
   border-radius: 8px;
   box-shadow: 0 0 8px rgba(0,0,0,0.1);
 }
