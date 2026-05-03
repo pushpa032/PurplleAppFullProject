@@ -42,27 +42,44 @@ function UserOrders() {
     );
   }
 
-  return (
-    <div className="user-orders-container">
-      <h2>My Orders</h2>
+ return (
+  <div className="user-orders-container">
+    <h2>My Orders</h2>
 
-      {orders.map((order) => (
-        <div key={order._id} className="user-order-card">
-          <p><b>Total:</b> ₹{order.totalPrice}</p>
-          <p><b>Status:</b> {order.status}</p>
+    <table className="user-orders-table">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Items</th>
+          <th>Total</th>
+          <th>Status</th>
+          <th>Date</th>
+        </tr>
+      </thead>
 
-          <div className="user-order-products">
-            {order.products.map((p, i) => (
-              <div key={i} className="user-order-product">
-                <img src={p.imageUrl} alt={p.name} />
-                <p>{p.name}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
-    </div>
-  );
+      <tbody>
+        {orders.map((order) => (
+          <tr key={order._id}>
+            <td>{order._id}</td>
+
+            <td>
+              {order.products.map((p, i) => (
+                <div key={i} className="order-item">
+                  <img src={p.imageUrl} alt={p.name} />
+                  <span>{p.name}</span>
+                </div>
+              ))}
+            </td>
+
+            <td>₹{order.totalPrice}</td>
+            <td>{order.status}</td>
+            <td>{new Date(order.createdAt).toLocaleString()}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+);
 }
 
 export default UserOrders;
