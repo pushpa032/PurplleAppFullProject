@@ -31,6 +31,7 @@ function Login({ onClose }) {
       const data = await res.json();
 
       if (data.success) {
+        alert(data.message);
         navigate("/otp", { state: { mobile } });
       } else {
         alert(data.message);
