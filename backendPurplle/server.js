@@ -16,7 +16,6 @@ const { placeOrder } = require("./controllers/orderController");
 const { statusChange } = require("./controllers/statusChange");
 const crypto = require("crypto");
 
-
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -29,22 +28,23 @@ app.use("/banner", bannerRoutes);
 app.use("/bannerTwo", bannerRoutesTwo);
 
 //  MongoDB connection
-mongoose.connect(process.env.MONGO_URL)
+mongoose
+  .connect(process.env.MONGO_URL)
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log("MongoDB Error:", err));
 
-// ROUTES 
+// ROUTES
 
 app.get("/", (req, res) => {
   res.send("Purplle Backend is Running");
 });
 
-// AUTH 
+// AUTH
 
 app.post("/createUser", (req, res) => {
   UserModel.create(req.body)
-    .then(user => res.json(user))
-    .catch(err => res.json(err));
+    .then((user) => res.json(user))
+    .catch((err) => res.json(err));
 });
 
 app.post("/sendOtp", authController.sendOtp);
@@ -61,25 +61,30 @@ app.post("/verifyOtp", async (req, res) => {
       return res.json({ success: false, message: "User not found" });
     }
 
-    if (user.verifyOtp === otp ) {
-      return res.json({ success: true, message: "OTP verified",
+    if (user.otpExpiry < new Date()) {
+      return res.json({ success: false, message: "OTP expired" });
+    }
+
+    if (user.verifyOtp === otp) {
+      return res.json({
+        success: true,
+        message: "OTP verified",
         user: {
           name: registerUser?.name || "",
           mobile: registerUser?.mobile || mobile,
-          email: registerUser?.email || ""
-        }
-       });
+          email: registerUser?.email || "",
+        },
+      });
     }
 
     return res.json({ success: false, message: "Invalid OTP" });
-
   } catch (error) {
     console.log("OTP ERROR:", error);
     res.status(500).json({ error: "OTP verification failed" });
   }
 });
 
-// PRODUCTS 
+// PRODUCTS
 
 // GET all products
 app.get("/products", async (req, res) => {
@@ -101,7 +106,7 @@ app.get("/products/:id", async (req, res) => {
   }
 });
 
-// ADD PRODUCT 
+// ADD PRODUCT
 app.post("/upload", async (req, res) => {
   try {
     console.log("BODY:", req.body);
@@ -118,7 +123,6 @@ app.post("/upload", async (req, res) => {
     await newProduct.save();
 
     res.json({ message: "Product added successfully" });
-
   } catch (error) {
     console.log("UPLOAD ERROR:", error);
     res.status(500).json({ error: error.message });
@@ -140,7 +144,6 @@ app.put("/products/:id", async (req, res) => {
     });
 
     res.json({ message: "Product updated" });
-
   } catch (err) {
     res.status(500).json({ error: "Cannot update product" });
   }
@@ -167,7 +170,6 @@ app.get("/users", async (req, res) => {
   }
 });
 
-
 //user registration
 
 app.post("/registerUser", async (req, res) => {
@@ -175,13 +177,13 @@ app.post("/registerUser", async (req, res) => {
     const { name, mobile, email, password } = req.body;
 
     const existingUser = await RegisterModel.findOne({
-      $or: [{ mobile }, { email }]
+      $or: [{ mobile }, { email }],
     });
 
     if (existingUser) {
       return res.json({
         success: false,
-        message: "User already exists"
+        message: "User already exists",
       });
     }
 
@@ -196,22 +198,21 @@ app.post("/registerUser", async (req, res) => {
 
     res.json({
       success: true,
-      message: "User Registered Successfully"
+      message: "User Registered Successfully",
     });
-
   } catch (error) {
     console.log("REGISTER ERROR:", error);
 
     if (error.code === 11000) {
       return res.json({
         success: false,
-        message: "User already exists"
+        message: "User already exists",
       });
     }
 
     res.status(500).json({
       success: false,
-      message: error.message
+      message: error.message,
     });
   }
 });
@@ -234,7 +235,6 @@ app.post("/addCart", async (req, res) => {
     await existingCart.save();
 
     res.json(existingCart);
-
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -249,13 +249,12 @@ app.get("/getCart", async (req, res) => {
     }
 
     res.json({ product: cart.product });
-
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
-// ORDERS 
+// ORDERS
 
 app.post("/orders/add/payment", placeOrder);
 
@@ -275,27 +274,26 @@ app.delete("/orders/:id", async (req, res) => {
   res.json({ message: "Deleted" });
 });
 
-
 //TO GET ONLY USER ORDER
 app.get("/getOrders/:mobile", async (req, res) => {
-  const orders = await OrderModel.find({ mobile: req.params.mobile })
-  .sort({ createdAt: -1 });
+  const orders = await OrderModel.find({ mobile: req.params.mobile }).sort({
+    createdAt: -1,
+  });
   res.json({ orders });
 });
-
 
 /* RAZORPAY - CREATE ORDER */
 app.post("/create-order", async (req, res) => {
   try {
     const razorpay = new Razorpay({
       key_id: process.env.RAZORPAY_KEY_ID,
-      key_secret: process.env.RAZORPAY_KEY_SECRET
+      key_secret: process.env.RAZORPAY_KEY_SECRET,
     });
 
     const options = {
       amount: req.body.amount,
       currency: req.body.currency || "INR",
-      receipt: "receipt_" + Date.now()
+      receipt: "receipt_" + Date.now(),
     };
 
     const response = await razorpay.orders.create(options);
@@ -303,7 +301,7 @@ app.post("/create-order", async (req, res) => {
     res.json({
       id: response.id,
       currency: response.currency,
-      amount: response.amount
+      amount: response.amount,
     });
   } catch (err) {
     console.log("Create order error:", err);
@@ -314,11 +312,8 @@ app.post("/create-order", async (req, res) => {
 /* VERIFY PAYMENT */
 app.post("/verify-payment", (req, res) => {
   try {
-    const {
-      razorpay_order_id,
-      razorpay_payment_id,
-      razorpay_signature
-    } = req.body;
+    const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
+      req.body;
 
     const generated = crypto
       .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
@@ -330,7 +325,7 @@ app.post("/verify-payment", (req, res) => {
     } else {
       return res.status(400).json({
         success: false,
-        message: "Invalid signature"
+        message: "Invalid signature",
       });
     }
   } catch (err) {
