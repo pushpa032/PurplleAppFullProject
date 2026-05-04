@@ -20,6 +20,7 @@ exports.sendOtp = async (req, res) => {
       });
     }
 
+
     const registerUser = await RegisterModel.findOne({ mobile });
 
     if (!registerUser) {
