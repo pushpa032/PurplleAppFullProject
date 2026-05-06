@@ -3,20 +3,29 @@ import React, { useContext, useState } from "react";
 import { CartContext } from "../features/ContextProvider";
 import { totalItem, totalPrice } from "../features/CartReducer";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import axios from "axios";
 import "../styles/CheckoutPagePayment.css";
 
 function CheckoutPage() {
-
   const { cart = [], dispatch } = useContext(CartContext);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+
+    if (!user) {
+      alert("Please login to continue");
+      navigate("/login");
+    }
+  }, []);
 
   const [form, setForm] = useState({
     fullName: "",
     number: "",
     email: "",
     address: "",
-    payment: ""
+    payment: "",
   });
 
   const handleChange = (e) => {
@@ -33,14 +42,18 @@ function CheckoutPage() {
     });
 
   const handlePayment = async () => {
-
-    const res = await loadScript(`https://checkout.razorpay.com/v1/checkout.js`);
+    const res = await loadScript(
+      `https://checkout.razorpay.com/v1/checkout.js`,
+    );
     if (!res) return alert("Razorpay failed");
 
-    const { data } = await axios.post(`https://purplleappbackend.onrender.com/create-order`, {
-      amount: totalPrice(cart) * 100,
-      currency: "INR",
-    });
+    const { data } = await axios.post(
+      `https://purplleappbackend.onrender.com/create-order`,
+      {
+        amount: totalPrice(cart) * 100,
+        currency: "INR",
+      },
+    );
 
     const options = {
       key: "rzp_test_SfDr1mY7vGO9lZ",
@@ -51,13 +64,15 @@ function CheckoutPage() {
         try {
           const verify = await axios.post(
             "https://purplleappbackend.onrender.com/verify-payment",
-            response
+            response,
           );
 
           if (verify.data.success) {
-
             // FIRST place order
-            const orderRes = await placeOrder("Online", response.razorpay_payment_id);
+            const orderRes = await placeOrder(
+              "Online",
+              response.razorpay_payment_id,
+            );
 
             if (orderRes) {
               alert("Payment completed & invoice sent to email ");
@@ -65,11 +80,9 @@ function CheckoutPage() {
               dispatch({ type: "CLEAR_CART" });
               navigate("/");
             }
-
           } else {
             alert("Payment verification failed");
           }
-
         } catch (error) {
           console.log("Payment Error:", error);
           alert("Something went wrong after payment");
@@ -79,7 +92,7 @@ function CheckoutPage() {
       prefill: {
         name: form.fullName,
         contact: form.number,
-        email: form.email
+        email: form.email,
       },
     };
 
@@ -97,7 +110,6 @@ function CheckoutPage() {
     };*/
 
   const placeOrder = async (mode, paymentId = "") => {
-
     const loggedUser = JSON.parse(localStorage.getItem("user"));
 
     const orderData = {
@@ -113,7 +125,7 @@ function CheckoutPage() {
 
     await axios.post(
       "https://purplleappbackend.onrender.com/orders/add/payment",
-      orderData
+      orderData,
     );
 
     alert("Order Placed Successfully");
@@ -140,9 +152,7 @@ function CheckoutPage() {
 
   return (
     <div className="checkout-page-container">
-
       <form className="checkout-page-form" onSubmit={handleSubmit}>
-
         <h2 className="checkout-page-title">Checkout</h2>
 
         <div className="checkout-page-summary">
@@ -191,9 +201,7 @@ function CheckoutPage() {
         <button className="checkout-page-button" type="submit">
           Proceed To Pay
         </button>
-
       </form>
-
     </div>
   );
 }

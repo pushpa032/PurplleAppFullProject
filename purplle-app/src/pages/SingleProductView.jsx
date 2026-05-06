@@ -4,12 +4,13 @@ import { useParams } from "react-router-dom";
 import "../styles/SingleProductView.css";
 import Header from "../component/Header";
 import { CartContext } from "../features/ContextProvider.jsx";
-
+import { useNavigate } from "react-router-dom";
 
 function SingleProduct() {
-  const { dispatch } = useContext(CartContext)
+  const { dispatch } = useContext(CartContext);
   const { id } = useParams();
   const [product, setProduct] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getProduct();
@@ -17,7 +18,9 @@ function SingleProduct() {
 
   const getProduct = async () => {
     try {
-      const res = await axios.get(`https://purplleappbackend.onrender.com/products/${id}`);
+      const res = await axios.get(
+        `https://purplleappbackend.onrender.com/products/${id}`,
+      );
       console.log(res.data);
       setProduct(res.data);
     } catch (error) {
@@ -25,48 +28,63 @@ function SingleProduct() {
     }
   };
 
-  if (!product)
-    return <h2>Loading...</h2>;
-
+  if (!product) return <h2>Loading...</h2>;
 
   return (
     <>
       <Header />
       <div className="single-product-page-view">
         <div className="single-product-image">
-          <img
-            src={product.imageUrl}
-            alt={product.name}
-          />
+          <img src={product.imageUrl} alt={product.name} />
         </div>
 
         <div className="single-product-information">
           <h2>{product.name}</h2>
           <p className="single-price">₹{product.price}</p>
           <p>{product.description}</p>
-          <button className="buy-button" onClick={() => {dispatch({
-            type: "Add", product: {
-              _id: product._id,
-              name: product.name,
-              price: product.price,
-              imageUrl: product.imageUrl
-            },
-          });
-          alert("Product Added to Cart");
-          }}>
+
+          <button
+            className="buy-button"
+            onClick={() => {
+              const user = localStorage.getItem("user");
+
+              if (!user) {
+                alert("Please login first");
+                navigate("/login");
+                return;
+              }
+
+              dispatch({
+                type: "Add",
+                product: {
+                  _id: product._id,
+                  name: product.name,
+                  price: product.price,
+                  imageUrl: product.imageUrl,
+                },
+              });
+
+              alert("Product Added to Cart");
+            }}
+          >
             Add to Cart
-        </button>
-        <button className="Wishlist-Button" onClick={() => dispatch({
-          type: "ADD_WISHLIST",
-          products:{
-            _id: product._id,
-            name: product.name,
-            price: product.price,
-            imageUrl: product.imageUrl
-          }
-        })}>
-          Add to Wishlist
-        </button>
+          </button>
+          <button
+            className="Wishlist-Button"
+            onClick={() =>
+              dispatch({
+                type: "ADD_WISHLIST",
+                products: {
+                  _id: product._id,
+                  name: product.name,
+                  price: product.price,
+                  imageUrl: product.imageUrl,
+                },
+              })
+            }
+          >
+            Add to Wishlist
+          </button>
         </div>
       </div>
     </>
