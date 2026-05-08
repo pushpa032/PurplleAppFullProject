@@ -20,7 +20,6 @@ exports.sendOtp = async (req, res) => {
       });
     }
 
-
     const registerUser = await RegisterModel.findOne({ mobile });
 
     if (!registerUser) {
@@ -50,22 +49,75 @@ exports.sendOtp = async (req, res) => {
       await user.save();
     }
 
-    res.json({
-      success: true,
-      message: "OTP Generated",
-      mobile,
-    });
-
-    sendMail(
+    await sendMail(
       email,
       "Purplle App Login OTP",
-      `<h2>Your OTP is : ${otp}</h2><p>Valid for 5 minutes</p>`
-    )
-      .then(() => console.log("MAIL SENT"))
-      .catch((err) => console.log("MAIL ERROR:", err.message));
+      `
+      <div style="font-family:Arial;padding:20px;background:#f9f9f9">
+        
+        <div style="
+          max-width:500px;
+          margin:auto;
+          background:white;
+          padding:30px;
+          border-radius:10px;
+          box-shadow:0 0 10px rgba(0,0,0,0.1);
+        ">
+        
+          <h2 style="color:#6a1b9a;text-align:center">
+            Purplle App OTP Verification
+          </h2>
 
+          <p>Hello User,</p>
+
+          <p>Your One-Time Password (OTP) is:</p>
+
+          <div style="
+            font-size:36px;
+            font-weight:bold;
+            text-align:center;
+            color:#6a1b9a;
+            letter-spacing:8px;
+            margin:30px 0;
+          ">
+            ${otp}
+          </div>
+
+          <p>
+            This OTP is valid for 
+            <b>5 minutes</b>.
+          </p>
+
+          <p>
+            Please do not share this OTP with anyone.
+          </p>
+
+          <hr />
+
+          <p style="
+            font-size:12px;
+            color:gray;
+            text-align:center;
+          ">
+            © Purplle App | Secure Login System
+          </p>
+
+        </div>
+
+      </div>
+      `,
+    );
+
+    console.log("MAIL SENT");
+
+    res.json({
+      success: true,
+      message: "OTP Sent Successfully",
+      mobile,
+    });
   } catch (error) {
     console.log("Full error", error);
+
     res.status(500).json({
       success: false,
       message: error.message,
