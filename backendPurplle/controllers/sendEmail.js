@@ -49,7 +49,7 @@ async function sendMail(to, subject, html, attachment) {
       {
         sender: {
           name: "Purplle App",
-          email: "pushpackm09@gmail.com", 
+          email:process.env.SENDER_EMAIL, 
         },
         to: [{ email: to }],
         subject: subject,
