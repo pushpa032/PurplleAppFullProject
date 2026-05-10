@@ -1,44 +1,107 @@
+/* Full Page Background */
 .profile-container {
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80vh;
-  background-color: #f5f5f5;
+  background: linear-gradient(135deg, #f3e7ff, #f8f9ff);
+  padding: 20px;
 }
 
+/* Profile Card */
 .profile-card {
-  background: white;
-  padding: 30px;
-  width: 320px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  width: 380px;
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 25px;
   text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: 0.3s ease;
 }
 
+/* Hover Effect */
+.profile-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Profile Heading */
 .profile-card h2 {
-  margin-bottom: 20px;
+  font-size: 36px;
+  margin-bottom: 30px;
+  color: #4b0082;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
+/* User Info */
 .profile-card p {
-  margin: 8px 0;
-  font-size: 16px;
+  font-size: 18px;
+  margin: 14px 0;
+  color: #444;
+  font-weight: 500;
 }
 
+/* Highlight Labels */
+.profile-card p b {
+  color: #111;
+}
+
+/* Buttons Common Style */
 .profile-card button {
-  margin-top: 15px;
-  padding: 10px;
   width: 100%;
+  padding: 14px;
+  margin-top: 18px;
   border: none;
-  border-radius: 5px;
+  border-radius: 12px;
+  font-size: 17px;
+  font-weight: 600;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
+/* Logout Button */
 .profile-card button:first-of-type {
-  background-color: #ff4d4d;
+  background: linear-gradient(135deg, #ff4d4d, #ff6b6b);
   color: white;
+  box-shadow: 0 5px 15px rgba(255, 77, 77, 0.3);
 }
 
+/* Logout Hover */
+.profile-card button:first-of-type:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #e63946, #ff4d4d);
+}
+
+/* Orders Button */
 .profile-card button:last-of-type {
-  background-color: #6c63ff;
+  background: linear-gradient(135deg, #6c63ff, #8a7dff);
   color: white;
+  box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+}
+
+/* Orders Hover */
+.profile-card button:last-of-type:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #5a54e6, #6c63ff);
+}
+
+/* Active Click Effect */
+.profile-card button:active {
+  transform: scale(0.97);
+}
+
+/* Responsive */
+@media screen and (max-width: 480px) {
+  .profile-card {
+    width: 100%;
+    padding: 30px 20px;
+  }
+
+  .profile-card h2 {
+    font-size: 30px;
+  }
+
+  .profile-card p {
+    font-size: 16px;
+  }
 }
