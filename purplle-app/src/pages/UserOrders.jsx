@@ -10,19 +10,18 @@ function UserOrders() {
   useEffect(() => {
     if (user) {
       fetch(`https://purplleappbackend.onrender.com/getOrders/${user.mobile}`)
-        .then(res => res.json())
-        .then(data => {
+        .then((res) => res.json())
+        .then((data) => {
           setOrders(data.orders);
           setLoading(false);
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err);
           setLoading(false);
         });
     }
   }, []);
 
-  // show loading first
   if (loading) {
     return (
       <div className="user-orders-container">
@@ -32,54 +31,72 @@ function UserOrders() {
     );
   }
 
-  // then check orders
   if (orders.length === 0) {
     return (
       <div className="user-orders-container">
         <h2>My Orders</h2>
-        <p>No orders found</p>
+        <p>No Orders Found</p>
       </div>
     );
   }
 
- return (
-  <div className="user-orders-container">
-    <h2>My Orders</h2>
+  return (
+    <div className="user-orders-container">
+      <h2 className="orders-title">My Orders</h2>
 
-    <table className="user-orders-table">
-      <thead>
-        <tr>
-          <th>Order ID</th>
-          <th>Items</th>
-          <th>Total</th>
-          <th>Status</th>
-          <th>Date</th>
-        </tr>
-      </thead>
+      {orders.map((order) => (
+        <div className="order-card" key={order._id}>
+          
+          {/* TOP */}
+          <div className="order-top">
+            <div>
+              <p className="label">Order ID</p>
+              <h4>{order._id}</h4>
+            </div>
 
-      <tbody>
-        {orders.map((order) => (
-          <tr key={order._id}>
-            <td>{order._id}</td>
+            <div>
+              <p className="label">Date</p>
+              <h4>
+                {new Date(order.createdAt).toLocaleDateString()}
+              </h4>
+            </div>
 
-            <td>
-              {order.products.map((p, i) => (
-                <div key={i} className="order-item">
-                  <img src={p.imageUrl} alt={p.name} />
-                  <span>{p.name}</span>
+            <div>
+              <p className="label">Total</p>
+              <h3 className="price">₹{order.totalPrice}</h3>
+            </div>
+
+            <div>
+              <p className="label">Status</p>
+
+              <span
+                className={
+                  order.status === "Shipped"
+                    ? "status shipped"
+                    : "status pending"
+                }
+              >
+                {order.status}
+              </span>
+            </div>
+          </div>
+
+          {/* PRODUCTS */}
+          <div className="products-section">
+            {order.products.map((p, i) => (
+              <div className="product-card" key={i}>
+                <img src={p.imageUrl} alt={p.name} />
+
+                <div>
+                  <h4>{p.name}</h4>
                 </div>
-              ))}
-            </td>
-
-            <td>₹{order.totalPrice}</td>
-            <td>{order.status}</td>
-            <td>{new Date(order.createdAt).toLocaleString()}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-);
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 }
 
 export default UserOrders;
