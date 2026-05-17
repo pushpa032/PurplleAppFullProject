@@ -25,30 +25,46 @@
   margin-bottom: 10px;
 }
 
+/* BUTTONS CONTAINER */
+.product-buttons {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* ADD TO CART */
 .buy-button {
-  padding: 10px 20px;
+  padding: 12px 24px;
   background: #f386ec;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  transition: 0.3s;
 }
 
 .buy-button:hover {
   background-color: purple;
+  transform: scale(1.03);
 }
 
+/* WISHLIST BUTTON */
 .Wishlist-Button {
-  padding: 10px 20px;
-  background: #f386ec;
-  color: white;
-  border: none;
-  border-radius: 5px;
+  padding: 12px 24px;
+  background: white;
+  color: #e91e63;
+  border: 2px solid #e91e63;
+  border-radius: 8px;
   cursor: pointer;
-  margin-left:50px;
+  font-size: 15px;
+  font-weight: bold;
+  transition: 0.3s;
 }
-
 
 .Wishlist-Button:hover {
-  background-color: purple;
+  background: #e91e63;
+  color: white;
+  transform: scale(1.03);
 }

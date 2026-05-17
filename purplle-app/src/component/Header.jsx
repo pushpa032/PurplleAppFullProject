@@ -4,15 +4,20 @@ import "../styles/Header.css";
 import { CartContext } from "../features/ContextProvider";
 
 function Header() {
-  const { cart } = useContext(CartContext)
+  const { cart, wishlist } = useContext(CartContext);
   const user = JSON.parse(localStorage.getItem("user"));
   return (
     <header>
-
       <div className="top-bar">
-        <span><i className="fa-solid fa-mobile"></i> DOWNLOAD APP</span>
-        <span><i className="fa-solid fa-circle-info"></i> SUPPORT</span>
-        <span><i className="fa-solid fa-truck"></i> TRACK ORDER</span>
+        <span>
+          <i className="fa-solid fa-mobile"></i> DOWNLOAD APP
+        </span>
+        <span>
+          <i className="fa-solid fa-circle-info"></i> SUPPORT
+        </span>
+        <span>
+          <i className="fa-solid fa-truck"></i> TRACK ORDER
+        </span>
       </div>
 
       <div className="main-header">
@@ -30,20 +35,21 @@ function Header() {
         </div>
 
         <div className="icons">
-
           <div className="icon">
             <Link to="/Wishlist">
               <i className="fa-regular fa-heart"></i>
             </Link>
+
+            <span>{wishlist.length}</span>
           </div>
 
           <div className="icon">
-            <Link
-              to="/cart"><i className="fa-solid fa-cart-shopping"></i></Link>
+            <Link to="/cart">
+              <i className="fa-solid fa-cart-shopping"></i>
+            </Link>
 
             <span>{cart.length}</span>
           </div>
-
 
           {/*<div className="icon">
             <Link to="/login">
@@ -62,14 +68,14 @@ function Header() {
               </Link>
             )}
           </div>
-
-
-
         </div>
       </div>
 
       <div className="category-bar">
-        <span ><i className="fa-regular fa-square-caret-down" />SHOP CATEGORIES</span>
+        <span>
+          <i className="fa-regular fa-square-caret-down" />
+          SHOP CATEGORIES
+        </span>
         <span>BRANDS</span>
         <span>OFFERS</span>
         <span>NEW</span>
@@ -77,7 +83,6 @@ function Header() {
         <span>MAGAZINE</span>
         <span>ELITE OFFERS</span>
       </div>
-
     </header>
   );
 }

@@ -7,7 +7,7 @@ import { CartContext } from "../features/ContextProvider.jsx";
 import { useNavigate } from "react-router-dom";
 
 function SingleProduct() {
-  const { dispatch } = useContext(CartContext);
+  const { dispatch, wishlistDispatch } = useContext(CartContext);
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const navigate = useNavigate();
@@ -43,48 +43,61 @@ function SingleProduct() {
           <p className="single-price">₹{product.price}</p>
           <p>{product.description}</p>
 
-          <button
-            className="buy-button"
-            onClick={() => {
-              const user = localStorage.getItem("user");
+          <div className="product-buttons">
+            <button
+              className="buy-button"
+              onClick={() => {
+                const user = localStorage.getItem("user");
 
-              if (!user) {
-                alert("Please login first");
-                navigate("/login");
-                return;
-              }
+                if (!user) {
+                  alert("Please login first");
+                  navigate("/login");
+                  return;
+                }
 
-              dispatch({
-                type: "Add",
-                product: {
-                  _id: product._id,
-                  name: product.name,
-                  price: product.price,
-                  imageUrl: product.imageUrl,
-                },
-              });
+                dispatch({
+                  type: "Add",
+                  product: {
+                    _id: product._id,
+                    name: product.name,
+                    price: product.price,
+                    imageUrl: product.imageUrl,
+                  },
+                });
 
-              alert("Product Added to Cart");
-            }}
-          >
-            Add to Cart
-          </button>
-          <button
-            className="Wishlist-Button"
-            onClick={() =>
-              dispatch({
-                type: "ADD_WISHLIST",
-                products: {
-                  _id: product._id,
-                  name: product.name,
-                  price: product.price,
-                  imageUrl: product.imageUrl,
-                },
-              })
-            }
-          >
-            Add to Wishlist
-          </button>
+                alert("Product Added to Cart");
+              }}
+            >
+              Add to Cart
+            </button>
+
+            <button
+              className="Wishlist-Button"
+              onClick={() => {
+                const user = localStorage.getItem("user");
+
+                if (!user) {
+                  alert("Please login first");
+                  navigate("/login");
+                  return;
+                }
+
+                wishlistDispatch({
+                  type: "ADD_WISHLIST",
+                  product: {
+                    _id: product._id,
+                    name: product.name,
+                    price: product.price,
+                    imageUrl: product.imageUrl,
+                  },
+                });
+
+                alert("Added To Wishlist");
+              }}
+            >
+              Wishlist
+            </button>
+          </div>
         </div>
       </div>
     </>
