@@ -11,6 +11,7 @@ import Cart from "./pages/Cart";
 import CheckoutPage from "./pages/CheckoutPage";
 import UserOrders from "./pages/UserOrders";
 import UserProfile from "./pages/UserProfile";
+import Wishlist from "./pages/Wishlist";
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path="/userOrders" element={<UserOrders />} />
         <Route path="/otp" element={<Otp />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/Wishlist" element={<Wishlist />} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route
           path="/admin/*"
