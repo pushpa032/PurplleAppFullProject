@@ -95,7 +95,7 @@ function SingleProduct() {
                 alert("Added To Wishlist");
               }}
             >
-              Wishlist
+              Add to Wishlist
             </button>
           </div>
         </div>

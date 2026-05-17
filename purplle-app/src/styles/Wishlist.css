@@ -44,13 +44,15 @@
 .wishlist-card button {
   width: 100%;
   padding: 10px;
-  border: none;
-  background: crimson;
+  background: #f386ec;
   color: white;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
 }
 
 .wishlist-card button:hover {
-  background: darkred;
+  background-color: purple;
 }
