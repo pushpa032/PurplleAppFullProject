@@ -53,9 +53,9 @@
 /* WISHLIST BUTTON */
 .Wishlist-Button {
   padding: 12px 24px;
-  background: white;
-  color: #e91e63;
-  border: 2px solid #e91e63;
+  background: #f386ec;
+  color: white;
+  border: none;
   border-radius: 8px;
   cursor: pointer;
   font-size: 15px;
@@ -64,7 +64,6 @@
 }
 
 .Wishlist-Button:hover {
-  background: #e91e63;
-  color: white;
+  background-color: purple;
   transform: scale(1.03);
 }
